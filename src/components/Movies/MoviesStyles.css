@@ -1,0 +1,260 @@
+/* ############### Movies Section ############### */
+.slide-container {
+  padding: 0 4em;
+
+  @media (max-width: 768px) {
+    padding: 0 2em;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 1em;
+  }
+}
+
+.all-slides-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.slide-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 30px;
+  }
+
+  @media (max-width: 480px) {
+    margin-bottom: 20px;
+  }
+}
+
+.slide-title {
+  font-size: 24px;
+  color: #e5e5e5;
+  font-weight: bold;
+  margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 650px) {
+  .slide-title {
+    text-align: center;
+  }
+}
+
+.all-cards-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  /* Ensure it takes full width of parent */
+}
+
+.all-cards-wrapper-scroll {
+  display: block;
+  /* Change from flex to block */
+  text-align: center;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  white-space: nowrap;
+  /* Keep all cards on one line */
+}
+
+.all-cards-wrapper-scroll::-webkit-scrollbar {
+  display: none;
+  /* Hide scrollbar for Chrome, Safari, Opera */
+}
+
+.all-cards-wrapper-scroll {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.card-wrapper {
+  display: inline-block;
+  /* Make cards inline-block for horizontal layout */
+}
+
+.card-wrapper:hover {
+  transform: scale(1.25);
+
+  @media (max-width: 768px) {
+    transform: scale(1.1);
+  }
+
+  @media (max-width: 480px) {
+    transform: none;
+    /* Disable transform on hover for very small screens */
+  }
+}
+
+.card-image {
+  border: 0;
+  width: 350px;
+  height: 180px;
+  object-fit: cover;
+  cursor: pointer;
+  padding: 0 10px;
+  border-radius: 20px;
+
+  @media (max-width: 768px) {
+    width: 250px;
+    height: 140px;
+    padding: 0 8px;
+  }
+
+  @media (max-width: 480px) {
+    width: 180px;
+    height: 100px;
+    padding: 0 5px;
+  }
+}
+
+.card-feature-wrapper {
+  background-size: contain;
+  position: relative;
+  height: 360px;
+  background-position-x: right;
+  background-repeat: no-repeat;
+  background-color: black;
+  padding-top: 30px;
+
+  @media (max-width: 900px) {
+    height: auto;
+    background-size: cover;
+    background-position-x: center;
+    padding: 20px;
+  }
+
+  @media (max-width: 600px) {
+    padding: 15px;
+  }
+
+  @media (max-width: 400px) {
+    padding: 10px;
+  }
+}
+
+.card-title {
+  color: white;
+  max-width: 640px;
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 30px;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+}
+
+.card-description {
+  color: white;
+  max-width: 500px;
+  font-size: 18px;
+  font-weight: 500;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 14px;
+  }
+}
+
+.card-feature-close {
+  color: white;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  outline: none;
+}
+
+.card-feature-close img {
+  filter: brightness(0) invert(1);
+  width: 24px;
+
+  @media (max-width: 480px) {
+    width: 20px;
+  }
+}
+
+.arrow-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.arrow-button.left {
+  left: 0;
+}
+
+.arrow-button.right {
+  right: 0;
+}
+
+.all-cards-container:hover .arrow-button {
+  opacity: 1;
+}
+
+.arrow-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.player-video {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+
+  @media (max-width: 768px) {
+    max-width: 600px;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 300px;
+  }
+}
+
+.player-overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
