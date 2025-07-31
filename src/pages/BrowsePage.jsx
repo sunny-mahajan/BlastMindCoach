@@ -143,14 +143,12 @@ function BrowsePage() {
         </NavBar>
         <FeatureWrapper>
           <FeatureTitle className="feature-title-browse">
-            Watch Joker Now
+            Unlock Learning Like Never Before
           </FeatureTitle>
           <FeatureSubTitle className="feature-subtitle-browse">
-            Forever alone in a crowd, failed comedian Arthur Fleck seeks
-            connection as he walks the streets of Gotham City. Arthur wears two
-            masks, the one he paints for his day job as a clown, and the guise
-            he projects in a futile attempt to feel like he is part of the world
-            around him.
+            Master Math, Science, English, and more with our interactive learning platform.
+            Get personalized lessons, real-time feedback, and smart progress tracking.
+            Learn at your own pace and build confidence every step of the way.
           </FeatureSubTitle>
           <PlayButton onClick={() => setShowPlayer(true)}>Play</PlayButton>
           {showPlayer ? (
