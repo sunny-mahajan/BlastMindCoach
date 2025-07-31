@@ -15,8 +15,6 @@ import CardWrapper from "../components/Movies/CardWrapper";
 import CardImage from "../components/Movies/CardImage";
 import CardTitle from "../components/Movies/CardTitle";
 import CardDescription from "../components/Movies/CardDescription";
-import CardFeatureWrapper from "../components/Movies/CardFeatureWrapper";
-import CardFeatureClose from "../components/Movies/CardFeatureClose";
 import PlayerVideo from "../components/Movies/PlayerVideo";
 import PlayerOverlay from "../components/Movies/PlayerOverlay";
 import FooterCompound from "../compounds/FooterCompound";
@@ -47,8 +45,6 @@ function BrowsePage() {
 
   const [category, setCategory] = useState("courses");
   const currentCategory = category === "courses" ? courses : tutorials;
-  const [showCardFeature, setShowCardFeature] = useState(false);
-  const [activeItem, setActiveItem] = useState(false);
   const [showPlayer, setShowPlayer] = useState(false);
   const [showBurgerMenu, setShowBurgerMenu] = useState(false);
 
@@ -149,38 +145,14 @@ function BrowsePage() {
             <SlideTitle>{slideItem.title}</SlideTitle>
 
             <AllCardsWrapper>
-              {slideItem.data.map((cardItem, i) => (
-                <CardWrapper key={cardItem.id}>
+              {slideItem.data.map((cardItem) => (
+                <CardWrapper key={cardItem.id} item={cardItem} category={category}>
                   <CardImage
-                    onClick={() => {
-                      setShowCardFeature(true);
-                      setActiveItem(cardItem);
-                    }}
                     src={`../images/${category}/${cardItem.genre}/${cardItem.slug}/small.jpg`}
                   />
                 </CardWrapper>
               ))}
             </AllCardsWrapper>
-            {showCardFeature &&
-              slideItem.title.toLowerCase() === activeItem.genre ? (
-              <CardFeatureWrapper
-                style={{
-                  backgroundImage: `url(../images/${category}/${activeItem.genre}/${activeItem.slug}/large.jpg)`,
-                }}
-              >
-                <CardTitle>{activeItem.title}</CardTitle>
-                <CardDescription>{activeItem.description}</CardDescription>
-                <CardFeatureClose onClick={() => setShowCardFeature(false)} />
-                <PlayButton onClick={() => setShowPlayer(true)}>
-                  Play
-                </PlayButton>
-                {showPlayer ? (
-                  <PlayerOverlay onClick={() => setShowPlayer(false)}>
-                    <PlayerVideo src="../videos/video.mp4" type="video/mp4" />
-                  </PlayerOverlay>
-                ) : null}
-              </CardFeatureWrapper>
-            ) : null}
           </SlideWrapper>
         ))}
       </AllSlidesWrapper>

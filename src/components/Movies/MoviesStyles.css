@@ -71,6 +71,8 @@
   scroll-behavior: smooth;
   white-space: nowrap;
   /* Keep all cards on one line */
+  padding-top: 50px; /* Add padding for scaled content */
+  padding-bottom: 50px; /* Add padding for scaled content */
 }
 
 .all-cards-wrapper-scroll::-webkit-scrollbar {
@@ -86,12 +88,31 @@
 }
 
 .card-wrapper {
+  position: relative;
   display: inline-block;
   /* Make cards inline-block for horizontal layout */
+  margin: 0 10px; /* Add some spacing between cards */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, z-index 0.3s ease;
+  width: 350px; /* Re-apply original image width */
+  height: 180px; /* Re-apply original image height */
+  border-radius: 20px; /* Keep border radius consistent */
+  overflow: hidden; /* Hide overflow from children if scaling occurs */
+
+  @media (max-width: 768px) {
+    width: 250px;
+    height: 140px;
+  }
+
+  @media (max-width: 480px) {
+    width: 180px;
+    height: 100px;
+  }
 }
 
 .card-wrapper:hover {
   transform: scale(1.25);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Add shadow */
+  z-index: 10; /* Bring to front */
 
   @media (max-width: 768px) {
     transform: scale(1.1);
@@ -103,26 +124,66 @@
   }
 }
 
+.card-details-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; /* Make it cover the entire card */
+  background-color: rgba(0, 0, 0, 0.7); /* Make background slightly transparent */
+  padding: 15px; /* Increase padding for better spacing */
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-radius: 20px; /* Match card image border radius */
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+  overflow: hidden; /* Ensure content within stays */
+  background-image: none; /* Explicitly remove any background image */
+  z-index: 11; /* Ensure it's on top of the image */
+  transition: opacity 0.3s ease-in-out; /* Only transition opacity */
+}
+
+.card-wrapper:hover .card-details-hover {
+  opacity: 1; /* Fade in */
+}
+
+.card-details-hover .card-title {
+  margin-bottom: 5px; /* Adjust margin for better spacing */
+  font-size: 14px; /* Even smaller font size */
+  font-weight: bold; /* Make title bold */
+  white-space: normal; /* Allow text wrapping */
+}
+
+.card-details-hover .card-description {
+  font-size: 10px; /* Even smaller font size for description */
+  margin-bottom: 10px; /* Space before play button */
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Maybe limit to 2 lines for better fit */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal; /* Allow text wrapping */
+}
+
+.card-details-hover .play-button {
+  align-self: flex-start; /* Align play button to the start */
+  padding: 8px 15px; /* Adjust padding */
+  font-size: 14px; /* Adjust font size */
+  margin-top: auto; /* Push button to the bottom if content is short */
+}
+
 .card-image {
   border: 0;
-  width: 350px;
-  height: 180px;
-  object-fit: inherit;
+  width: 100%; /* Ensure image fills the wrapper */
+  height: 100%; /* Ensure image fills the wrapper */
+  object-fit: cover; /* Cover the area */
   cursor: pointer;
-  padding: 0 10px;
   border-radius: 20px;
-
-  @media (max-width: 768px) {
-    width: 250px;
-    height: 140px;
-    padding: 0 8px;
-  }
-
-  @media (max-width: 480px) {
-    width: 180px;
-    height: 100px;
-    padding: 0 5px;
-  }
+  position: absolute; /* Position the image absolutely within the wrapper */
+  top: 0;
+  left: 0;
+  padding: 0;
 }
 
 .card-feature-wrapper {
