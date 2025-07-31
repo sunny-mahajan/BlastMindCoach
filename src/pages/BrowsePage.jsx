@@ -22,50 +22,31 @@ import PlayerOverlay from "../components/Movies/PlayerOverlay";
 import FooterCompound from "../compounds/FooterCompound";
 
 function BrowsePage() {
-  let { series } = useContent("series");
-  series = [
+  let { tutorials } = useContent("tutorials");
+  tutorials = [
     {
-      title: "Documentaries",
-      data: series.filter((item) => item.genre === "documentaries"),
+      title: "Mathematics",
+      data: tutorials.filter((item) => item.genre === "mathematics"),
     },
     {
-      title: "Comedies",
-      data: series.filter((item) => item.genre === "comedies"),
+      title: "Science",
+      data: tutorials.filter((item) => item.genre === "science"),
     },
-    {
-      title: "Children",
-      data: series.filter((item) => item.genre === "children"),
-    },
-    { title: "Crime", data: series.filter((item) => item.genre === "crime") },
-    {
-      title: "Feel-Good",
-      data: series.filter((item) => item.genre === "feel-good"),
-    },
+    
   ];
 
-  let { films } = useContent("films");
-  films = [
-    { title: "Drama", data: films.filter((item) => item.genre === "drama") },
+  let { courses } = useContent("courses");
+  courses = [
+    { title: "Mathematics", data: courses.filter((item) => item.genre === "mathematics") },
     {
-      title: "Thriller",
-      data: films.filter((item) => item.genre === "thriller"),
+      title: "Science",
+      data: courses.filter((item) => item.genre === "science"),
     },
-    {
-      title: "Children",
-      data: films.filter((item) => item.genre === "children"),
-    },
-    {
-      title: "Suspense",
-      data: films.filter((item) => item.genre === "suspense"),
-    },
-    {
-      title: "Romance",
-      data: films.filter((item) => item.genre === "romance"),
-    },
+
   ];
 
-  const [category, setCategory] = useState("films");
-  const currentCategory = category === "films" ? films : series;
+  const [category, setCategory] = useState("courses");
+  const currentCategory = category === "courses" ? courses : tutorials;
   const [showCardFeature, setShowCardFeature] = useState(false);
   const [activeItem, setActiveItem] = useState(false);
   const [showPlayer, setShowPlayer] = useState(false);
@@ -81,19 +62,19 @@ function BrowsePage() {
           <div className="navbar-links-wrapper">
             <HeaderLink
               className={
-                category === "films" ? "header-link-bold" : "header-link"
+                category === "courses" ? "header-link-bold" : "header-link"
               }
-              onClick={() => setCategory("films")}
+              onClick={() => setCategory("courses")}
             >
-              Films
+              Courses
             </HeaderLink>
             <HeaderLink
               className={
-                category === "series" ? "header-link-bold" : "header-link"
+                category === "tutorials" ? "header-link-bold" : "header-link"
               }
-              onClick={() => setCategory("series")}
+              onClick={() => setCategory("tutorials")}
             >
-              Series
+              Tutorials
             </HeaderLink>
           </div>
 
@@ -117,25 +98,25 @@ function BrowsePage() {
                 />
                 <HeaderLink
                   className={
-                    category === "films" ? "header-link-bold" : "header-link"
+                    category === "courses" ? "header-link-bold" : "header-link"
                   }
                   onClick={() => {
-                    setCategory("films");
+                    setCategory("courses");
                     setShowBurgerMenu(false);
                   }}
                 >
-                  Films
+                  courses
                 </HeaderLink>
                 <HeaderLink
                   className={
-                    category === "series" ? "header-link-bold" : "header-link"
+                    category === "tutorials" ? "header-link-bold" : "header-link"
                   }
                   onClick={() => {
-                    setCategory("series");
+                    setCategory("tutorials");
                     setShowBurgerMenu(false);
                   }}
                 >
-                  Series
+                  tutorials
                 </HeaderLink>
               </div>
             </div>
@@ -159,7 +140,7 @@ function BrowsePage() {
         </FeatureWrapper>
       </HeaderWrapper>
 
-      <AllSlidesWrapper style={{ width: "100%", background: "black" }}>
+      <AllSlidesWrapper style={{ width: "100%"}}>
         {currentCategory.map((slideItem) => (
           <SlideWrapper
             key={`${category}-${slideItem.title.toLowerCase()}`}
@@ -168,8 +149,8 @@ function BrowsePage() {
             <SlideTitle>{slideItem.title}</SlideTitle>
 
             <AllCardsWrapper>
-              {slideItem.data.map((cardItem) => (
-                <CardWrapper key={cardItem.docId}>
+              {slideItem.data.map((cardItem, i) => (
+                <CardWrapper key={cardItem.id}>
                   <CardImage
                     onClick={() => {
                       setShowCardFeature(true);

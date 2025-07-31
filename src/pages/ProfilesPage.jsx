@@ -17,9 +17,10 @@ const ProfilesContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #000;
   padding: 2rem;
+  box-sizing: border-box;
 
   @media (max-width: 768px) {
     padding: 1rem;

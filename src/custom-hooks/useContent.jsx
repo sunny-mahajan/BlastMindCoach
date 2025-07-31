@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { series, films } from "../seed";
+import { tutorials, courses } from "../seed";
 
 function useContent(target) {
   const [content, setContent] = useState([]);
 
   useEffect(() => {
-    if (target === "series") {
-      setContent(series);
-    } else if (target === "films") {
-      setContent(films);
+    if (target === "courses") {
+      setContent(courses);
+    } else if (target === "tutorials") {
+      setContent(tutorials);
     } else {
       console.log("Invalid target for content");
     }
