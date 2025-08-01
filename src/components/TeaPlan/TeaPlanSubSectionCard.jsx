@@ -20,8 +20,8 @@ const SubSectionCard = styled.div`
   justify-content: center; /* Center content vertically */
 
   &:hover {
-    transform: translateY(-5px);
-    border-radius: 8px;
+    transform: scale(1.25) translateY(-5px);
+    z-index: 1;
   }
 `;
 
@@ -32,15 +32,6 @@ const SubSectionImage = styled.img`
   border-radius: 20px;
   margin-bottom: 10px;
   transition: transform 0.3s ease-in-out;
-
-  ${(props) =>
-    props.itemType === "training" &&
-    props.showDetails &&
-    `
-    &:hover {
-      transform: scale(1.25);
-    }
-  `}
 `;
 
 function TeaPlanSubSectionCard({ item }) {
@@ -51,7 +42,7 @@ function TeaPlanSubSectionCard({ item }) {
       onMouseEnter={() => setShowDetails(true)}
       onMouseLeave={() => setShowDetails(false)}
     >
-      <SubSectionImage src={item.image} alt={item.title} itemType={item.type} />
+      <SubSectionImage src={item.image} alt={item.title} />
       {showDetails && item.type !== "tool" && (
         <PlayerOverlay>
           <PlayerVideo
