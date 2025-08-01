@@ -328,3 +328,22 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
 }
+
+.card-number {
+  position: absolute;
+  top: 45%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  font-size: 15rem;
+  color: white;
+  opacity: 0.8;
+  z-index: 2; /* Ensure it's above the image but below the hover details */
+  font-weight: 900;
+  -webkit-text-stroke: 1px black; /* Outline for better visibility */
+  text-stroke: 1px black;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.card-wrapper:hover .card-number {
+  opacity: 0;
+}

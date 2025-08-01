@@ -25,11 +25,11 @@ function BrowsePage() {
   tutorials = [
     {
       title: "Favorites",
-      data: tutorials.filter((item) => item.genre === "mathematics"),
+      data: tutorials.filter((item) => item.genre === "mathematics").sort((a, b) => a.slug.localeCompare(b.slug)),
     },
     {
       title: "AI-Edge Habit Mechanic ® Organizational Transform Program",
-      data: tutorials.filter((item) => item.genre === "science"),
+      data: tutorials.filter((item) => item.genre === "science").sort((a, b) => a.slug.localeCompare(b.slug)),
     },
   ];
 
@@ -37,11 +37,11 @@ function BrowsePage() {
   courses = [
     {
       title: "Favorites",
-      data: courses.filter((item) => item.genre === "mathematics"),
+      data: courses.filter((item) => item.genre === "mathematics").sort((a, b) => a.slug.localeCompare(b.slug)),
     },
     {
       title: "AI-Edge Habit Mechanic ® Organizational Transform Program",
-      data: courses.filter((item) => item.genre === "science"),
+      data: courses.filter((item) => item.genre === "science").sort((a, b) => a.slug.localeCompare(b.slug)),
     },
   ];
 
@@ -171,6 +171,11 @@ function BrowsePage() {
                   item={cardItem}
                   category={category}
                   onCardClick={handleTeaPlanClick}
+                  itemIndex={
+                    slideItem.title === "Favorites" && category === "courses"
+                      ? slideItem.data.indexOf(cardItem) + 1
+                      : null
+                  }
                 >
                   <CardImage
                     src={`../images/${category}/${cardItem.genre}/${cardItem.slug}/small.png`}

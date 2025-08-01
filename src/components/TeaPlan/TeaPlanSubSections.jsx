@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import styled from "styled-components";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import TeaPlanSubSectionCard from "./TeaPlanSubSectionCard";
 
 const SubSectionContainer = styled.div`
   display: flex;
@@ -53,42 +54,6 @@ const ArrowButton = styled.button`
   }
 `;
 
-const SubSectionCard = styled.div`
-  border-radius: 8px;
-  padding: 15px;
-  color: white;
-  text-align: center;
-  min-width: 200px; /* Fixed width for cards */
-  cursor: pointer;
-  transition: transform 0.2s;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-shrink: 0; /* Prevent cards from shrinking */
-
-  &:hover {
-    transform: translateY(-5px);
-  }
-`;
-
-const SubSectionImage = styled.img`
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 20px;
-  margin-bottom: 10px;
-`;
-
-const SubSectionTitle = styled.h3`
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-`;
-
-const SubSectionDescription = styled.p`
-  font-size: 0.9rem;
-  color: #bbb;
-`;
-
 function TeaPlanSubSections({ subSections, parentItem }) {
   const scrollRef = useRef(null);
   const scrollAmount = 800; // Adjust this value as needed
@@ -120,9 +85,7 @@ function TeaPlanSubSections({ subSections, parentItem }) {
         </ArrowButton>
         <CarouselScroll ref={scrollRef}>
           {carouselItems.map((item) => (
-            <SubSectionCard key={item.id}>
-              <SubSectionImage src={item.image} alt={item.title} />
-            </SubSectionCard>
+            <TeaPlanSubSectionCard key={item.id} item={item} />
           ))}
         </CarouselScroll>
         <ArrowButton className="right" onClick={() => scroll("right")}>

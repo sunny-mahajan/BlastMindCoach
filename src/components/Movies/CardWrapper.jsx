@@ -6,7 +6,7 @@ import PlayerVideo from "./PlayerVideo";
 import PlayerOverlay from "./PlayerOverlay";
 import CardImage from "./CardImage"; // Import CardImage
 
-function CardWrapper({ item, category, onCardClick, ...restProps }) {
+function CardWrapper({ item, category, onCardClick, itemIndex, ...restProps }) {
   const [showDetails, setShowDetails] = useState(false);
 
   return (
@@ -20,6 +20,7 @@ function CardWrapper({ item, category, onCardClick, ...restProps }) {
       {/* CardImage is always visible */}
       <CardImage
         src={`/images/${category}/${item.genre}/${item.slug}/small.png`}
+        itemIndex={itemIndex}
       />
 
       {showDetails && (
