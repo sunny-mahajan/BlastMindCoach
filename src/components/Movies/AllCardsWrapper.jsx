@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import "./MoviesStyles.css";
-
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 function AllCardsWrapper({ children, ...restProps }) {
   const scrollRef = useRef(null);
   const scrollAmount = 800; // Adjust this value as needed
@@ -22,13 +22,14 @@ function AllCardsWrapper({ children, ...restProps }) {
   return (
     <div className="all-cards-container">
       <button className="arrow-button left" onClick={() => scroll("left")}>
-        &lt;
+        <img src="/images/icons/chevron-right.png" alt="Left Arrow" />
       </button>
       <div className="all-cards-wrapper-scroll" ref={scrollRef} {...restProps}>
         {children}
       </div>
       <button className="arrow-button right" onClick={() => scroll("right")}>
-        &gt;
+        <img src="/images/icons/chevron-right.png" alt="Right Arrow" />
+        <ArrowForwardIosIcon />
       </button>
     </div>
   );

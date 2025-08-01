@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import * as ROUTES from "../constants/routes";
 
 // Central color mapping
 const profileColors = {
@@ -158,7 +157,7 @@ const ProfileName = styled.p`
   }
 `;
 
-export default function ProfilesPage() {
+function ProfilesPage() {
   const navigate = useNavigate();
 
   const profiles = [
@@ -168,7 +167,7 @@ export default function ProfilesPage() {
   ];
 
   const handleProfileClick = () => {
-    navigate(ROUTES.BROWSE);
+    navigate("/browse");
   };
 
   return (
@@ -218,3 +217,5 @@ export default function ProfilesPage() {
     </ProfilesContainer>
   );
 }
+
+export default ProfilesPage;

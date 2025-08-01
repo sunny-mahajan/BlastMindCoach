@@ -274,7 +274,6 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
   color: white;
   border: none;
   padding: 10px;
@@ -282,6 +281,9 @@
   z-index: 10;
   opacity: 0;
   transition: opacity 0.3s ease;
+  font-size: 30px;
+  background-color: transparent;
+
 }
 
 .arrow-button.left {
@@ -297,7 +299,7 @@
 }
 
 .arrow-button:hover {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: transparent;
 }
 
 .player-video {
