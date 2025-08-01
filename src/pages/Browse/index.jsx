@@ -16,6 +16,7 @@ import CardImage from "../../components/Movies/CardImage";
 import PlayerVideo from "../../components/Movies/PlayerVideo";
 import PlayerOverlay from "../../components/Movies/PlayerOverlay";
 import FooterCompound from "../../compounds/FooterCompound";
+import TeaPlanSubSections from "../../components/TeaPlan/TeaPlanSubSections";
 
 function BrowsePage() {
   let { tutorials } = useContent("tutorials");
@@ -46,6 +47,17 @@ function BrowsePage() {
   const currentCategory = category === "courses" ? courses : tutorials;
   const [showPlayer, setShowPlayer] = useState(false);
   const [showBurgerMenu, setShowBurgerMenu] = useState(false);
+  const [showTeaPlanSection, setShowTeaPlanSection] = useState(false);
+
+  const handleTeaPlanClick = (itemSlug) => {
+    if (itemSlug === "tea-plan") {
+      setShowTeaPlanSection(!showTeaPlanSection);
+    }
+  };
+
+  const teaPlanItem = courses
+    .flatMap((course) => course.data)
+    .find((item) => item.slug === "tea-plan");
 
   return (
     <>
@@ -152,6 +164,7 @@ function BrowsePage() {
                   key={cardItem.id}
                   item={cardItem}
                   category={category}
+                  onCardClick={handleTeaPlanClick}
                 >
                   <CardImage
                     src={`../images/${category}/${cardItem.genre}/${cardItem.slug}/small.png`}
@@ -162,6 +175,9 @@ function BrowsePage() {
           </SlideWrapper>
         ))}
       </AllSlidesWrapper>
+      {showTeaPlanSection && teaPlanItem && teaPlanItem.subSection && (
+        <TeaPlanSubSections subSections={teaPlanItem.subSection} />
+      )}
       <FooterCompound />
     </>
   );

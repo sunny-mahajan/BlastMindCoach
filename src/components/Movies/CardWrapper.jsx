@@ -6,15 +6,15 @@ import PlayerVideo from "./PlayerVideo";
 import PlayerOverlay from "./PlayerOverlay";
 import CardImage from "./CardImage"; // Import CardImage
 
-function CardWrapper({ item, category, ...restProps }) {
+function CardWrapper({ item, category, onCardClick, ...restProps }) {
   const [showDetails, setShowDetails] = useState(false);
 
-  console.log("CardWrapper item:", item);
   return (
     <div
       className="card-wrapper"
       onMouseEnter={() => setShowDetails(true)}
       onMouseLeave={() => setShowDetails(false)}
+      onClick={() => onCardClick(item.slug)}
       {...restProps}
     >
       {/* CardImage is always visible */}

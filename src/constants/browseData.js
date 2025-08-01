@@ -1,93 +1,160 @@
 export const tutorials = [
   {
-    id: "97314545-2f84-48f8-a1c6-2c53a6d45903",
-    title: "Algebra Fundamentals",
+    id: "0a074c72-c51d-400d-950c-e16109e20015",
+    title: "Advanced Calculus",
     description:
-      "Master the basics of algebra including equations, inequalities, polynomials, and factoring techniques.",
-    genre: "mathematics",
-    level: "beginner",
-    slug: "discrete-math",
-  },
-  {
-    id: "f4410526-9d32-475a-a3a2-23c04218683e",
-    title: "Introduction to Calculus",
-    description:
-      "Learn the core concepts of calculus including limits, derivatives, and integrals with practical applications.",
-    genre: "mathematics",
-    level: "intermediate",
-    slug: "discrete-math",
-  },
-  {
-    id: "96f7e4f1-6387-43f1-8178-57d45763261a",
-    title: "Geometry Essentials",
-    description:
-      "Explore geometric principles, shapes, angles, and proofs in this comprehensive geometry course.",
-    genre: "mathematics",
-    level: "beginner",
-    slug: "discrete-math",
-  },
-  {
-    id: "a28b031b-21d3-49d6-857c-87d81a4b277d",
-    title: "Statistics and Probability",
-    description:
-      "Understand data analysis, probability theory, and statistical methods for real-world problem solving.",
-    genre: "mathematics",
-    level: "intermediate",
-    slug: "discrete-math",
-  },
-  {
-    id: "44720973-196d-4d2b-aa0f-0498b0f80721",
-    title: "Linear Algebra",
-    description:
-      "Dive into vectors, matrices, linear transformations, and their applications in computer science and engineering.",
+      "Master multivariable calculus, differential equations, and advanced integration techniques.",
     genre: "mathematics",
     level: "advanced",
-    slug: "discrete-math",
+    slug: "advanced-calculus",
   },
   {
-    id: "92182d88-7557-4b71-91a1-f3b1406d4458",
-    title: "Physics for Beginners",
+    id: "2d1b09b9-d29b-449e-8c34-71239c065f4d",
+    title: "Organic Chemistry",
     description:
-      "Discover the fundamental laws of motion, energy, and matter in this introductory physics course.",
-    genre: "science",
-    level: "beginner",
-    slug: "organic-chemistry",
-  },
-  {
-    id: "c82756df-711e-450f-90e6-50d603a1147e",
-    title: "Chemistry Basics",
-    description:
-      "Learn about atomic structure, chemical bonds, reactions, and the periodic table of elements.",
-    genre: "science",
-    level: "beginner",
-    slug: "organic-chemistry",
-  },
-  {
-    id: "d832d207-60cc-48a5-83e9-09259160350d",
-    title: "Biology Fundamentals",
-    description:
-      "Explore cell biology, genetics, evolution, and ecology in this comprehensive biology introduction.",
-    genre: "science",
-    level: "beginner",
-    slug: "organic-chemistry",
-  },
-  {
-    id: "5b5c9075-8012-411a-85b5-22593f63901b",
-    title: "Earth Science",
-    description:
-      "Study geology, meteorology, oceanography, and astronomy in this survey of earth sciences.",
-    genre: "science",
-    level: "beginner",
-    slug: "organic-chemistry",
-  },
-  {
-    id: "1c28f325-15a4-471a-b0c4-ed31df58b3c6",
-    title: "Environmental Science",
-    description:
-      "Examine ecosystems, biodiversity, climate change, and sustainability in our modern world.",
+      "Study the structure, properties, and reactions of organic compounds and biomolecules.",
     genre: "science",
     level: "intermediate",
     slug: "organic-chemistry",
+  },
+  {
+    id: "5b59a6c9-efbe-40f4-b97c-3f24255799e0",
+    title: "Quantum Physics",
+    description:
+      "Explore the strange world of quantum mechanics, wave-particle duality, and quantum states.",
+    genre: "science",
+    level: "advanced",
+    slug: "quantum-physics",
+  },
+  {
+    id: "1676f4ae-d81b-426b-9516-e578c773950e",
+    title: "Number Theory",
+    description:
+      "Explore prime numbers, modular arithmetic, and other fundamental concepts in pure mathematics.",
+    genre: "mathematics",
+    level: "advanced",
+    slug: "tea-plan",
+    isTeaPlan: true,
+    subSection: [
+      {
+        id: "1676f4ae-d81b-426b-9516-e578c773950e",
+        title: "Number Theory",
+        description:
+          "Explore prime numbers, modular arithmetic, and other fundamental concepts in pure mathematics.",
+        genre: "mathematics",
+        level: "advanced",
+        slug: "tea-plan",
+      },
+      {
+        id: "1676f4ae-d81b-426b-9516-e578c773950e",
+        title: "Number Theory",
+        description:
+          "Explore prime numbers, modular arithmetic, and other fundamental concepts in pure mathematics.",
+        genre: "mathematics",
+        level: "advanced",
+        slug: "tea-plan",
+      },
+    ],
+  },
+  {
+    id: "4b87053e-3685-450f-90e8-070857790b50",
+    title: "Discrete Mathematics",
+    description:
+      "Learn about logic, set theory, combinatorics, graph theory, and their computer science applications.",
+    genre: "mathematics",
+    level: "intermediate",
+    slug: "discrete-math",
+  },
+  {
+    id: "0559f338-8921-4f93-b4e8-8798e16ae317",
+    title: "Astrophysics",
+    description:
+      "Discover the physics of celestial objects, cosmology, and the structure of the universe.",
+    genre: "science",
+    level: "advanced",
+    slug: "learn-how-brain-works",
+  },
+
+  {
+    id: "6e216894-39f5-4702-861f-1c58c2777477",
+    title: "Genetics and Molecular Biology",
+    description:
+      "Understand DNA, RNA, protein synthesis, and modern genetic engineering techniques.",
+    genre: "science",
+    level: "intermediate",
+    slug: "learn-how-your-brain-works",
+  },
+  {
+    id: "542a9b6c-e14b-4b2a-8c01-8b2b694b910b",
+    title: "Differential Equations",
+    description:
+      "Solve ordinary and partial differential equations with applications in physics and engineering.",
+    genre: "mathematics",
+    level: "advanced",
+    slug: "optimal-activation-review",
+  },
+  {
+    id: "8c35b1d5-2a29-4e0d-b847-b35319808a3d",
+    title: "Thermodynamics",
+    description:
+      "Study heat, energy, entropy, and the laws governing energy transfer in physical systems.",
+    genre: "science",
+    level: "intermediate",
+    slug: "tea-plan",
+  },
+  {
+    id: "277e923e-63f6-4d2d-8b01-1e247b952219",
+    title: "Mathematical Logic",
+    description:
+      "Explore propositional and predicate logic, proofs, and the foundations of mathematical reasoning.",
+    genre: "mathematics",
+    level: "advanced",
+    slug: "fam-story",
+  },
+  {
+    id: "186a117b-d248-4389-9e8c-57224f8d55a3",
+    title: "Kids Math Adventures",
+    description:
+      "Fun, interactive lessons introducing basic arithmetic, shapes, and patterns for young learners.",
+    genre: "mathematics",
+    level: "beginner",
+    slug: "advanced-calculus",
+  },
+  {
+    id: "4444747a-1313-432d-930b-93e18a937a09",
+    title: "Science for Children",
+    description:
+      "Engaging experiments and explanations of basic scientific concepts for elementary students.",
+    genre: "science",
+    level: "beginner",
+    slug: "quantum-physics",
+  },
+  {
+    id: "d9735d44-30d8-4a94-b258-299587441112",
+    title: "Neuroscience",
+    description:
+      "Study the structure and function of the nervous system and brain at multiple levels.",
+    genre: "science",
+    level: "advanced",
+    slug: "organic-chemistry",
+  },
+  {
+    id: "d6529341-a1b9-4976-8096-72944b9319f7",
+    title: "Abstract Algebra",
+    description:
+      "Explore groups, rings, fields, and other algebraic structures in advanced mathematics.",
+    genre: "mathematics",
+    level: "advanced",
+    slug: "fam-story",
+  },
+  {
+    id: "721c54b3-c1c0-488f-a912-39c8116938a9",
+    title: "Biochemistry",
+    description:
+      "Understand the chemical processes within living organisms at the molecular level.",
+    genre: "science",
+    level: "intermediate",
+    slug: "tea-plan",
   },
 ];
 
@@ -127,6 +194,27 @@ export const courses = [
     genre: "mathematics",
     level: "advanced",
     slug: "tea-plan",
+    isTeaPlan: true,
+    subSection: [
+      {
+        id: "1676f4ae-d81b-426b-9516-e578c773950e",
+        title: "Number Theory",
+        description:
+          "Explore prime numbers, modular arithmetic, and other fundamental concepts in pure mathematics.",
+        genre: "mathematics",
+        level: "advanced",
+        slug: "tea-plan",
+      },
+      {
+        id: "1676f4ae-d81b-426b-9516-e578c773950e",
+        title: "Number Theory",
+        description:
+          "Explore prime numbers, modular arithmetic, and other fundamental concepts in pure mathematics.",
+        genre: "mathematics",
+        level: "advanced",
+        slug: "tea-plan",
+      },
+    ],
   },
   {
     id: "4b87053e-3685-450f-90e8-070857790b50",
