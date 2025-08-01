@@ -1,27 +1,16 @@
-import React from "react";
-import { useLoading } from "../context/LoadingContext";
+import React, { lazy, Suspense } from "react";
 
-// Helper to allow setting loading state outside of React render
-let setLoadingGlobal = null;
-export const setGlobalLoadingSetter = (setter) => {
-  setLoadingGlobal = setter;
-};
+// Usage: asyncComponent(() => import("../pages/SomePage"))
+const asyncComponent = (importFunc) => {
+  const LazyComponent = lazy(importFunc);
 
-const asyncComponent = (importComponent) => {
+  // Return a component that wraps with Suspense (customize fallback as needed)
   return function AsyncComponentWrapper(props) {
-    const { setLoading } = useLoading();
-    React.useEffect(() => {
-      setGlobalLoadingSetter(setLoading);
-    }, [setLoading]);
-    const LazyComponent = React.useMemo(() =>
-      React.lazy(() => {
-        if (setLoadingGlobal) setLoadingGlobal(true);
-        return importComponent().finally(() => {
-          if (setLoadingGlobal) setLoadingGlobal(false);
-        });
-      }),
-    []);
-    return <LazyComponent {...props} />;
+    return (
+      <Suspense fallback={null}>
+        <LazyComponent {...props} />
+      </Suspense>
+    );
   };
 };
 

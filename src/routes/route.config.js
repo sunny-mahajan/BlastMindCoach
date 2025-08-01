@@ -14,12 +14,10 @@ export const authRouter = [
 export const userRouter = [
   {
     path: "/",
-    component: asyncComponent(() => import("../pages/Home/index")),
-    protected: true,
+    component: asyncComponent(() => import("../pages/ProfilesPage")),
   },
   {
     path: "/browse",
     component: asyncComponent(() => import("../pages/Browse/index")),
-    protected: true,
   },
 ];
