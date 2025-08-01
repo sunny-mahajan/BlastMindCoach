@@ -8,6 +8,7 @@ const isAuthenticated = () => {
 };
 
 const ProtectedRoute = ({ children }) => {
+  console.log("ProtectedRoute", children);
   return isAuthenticated() ? children : <Navigate to="/signin" replace />;
 };
 

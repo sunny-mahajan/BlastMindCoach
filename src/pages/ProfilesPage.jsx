@@ -167,7 +167,6 @@ function ProfilesPage() {
   ];
 
   const handleProfileClick = () => {
-    // Navigate to the home page or profile details
     navigate("/browse");
   };
 

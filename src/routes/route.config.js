@@ -18,6 +18,6 @@ export const userRouter = [
   },
   {
     path: "/browse",
-    component: asyncComponent(() => import("../pages/Browse/index")),
+    component: asyncComponent(() => import("../pages/Browse")),
   },
 ];
