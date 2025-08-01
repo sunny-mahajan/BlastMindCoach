@@ -108,19 +108,24 @@ const questions = [
   "🤝 Lack of regular exercise (10,000+ steps, elevated heart rate) reduces my mental energy and focus. ",
 ];
 
-function AssessmentCard({ setScreen, setAssessmentData }) {
+function AssessmentCard({ setScreen, setAssessmentData, onQuestionChange }) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState({});
   const [selectedValue, setSelectedValue] = useState(null);
 
   const handleNext = () => {
     if (currentQuestion < questions.length - 1) {
-      setCurrentQuestion((prev) => prev + 1);
-      setSelectedValue(answers[currentQuestion + 1] || null);
+      const nextQuestion = currentQuestion + 1;
+      setCurrentQuestion(nextQuestion);
+      setSelectedValue(answers[nextQuestion] || null);
+      if (onQuestionChange) {
+        onQuestionChange(nextQuestion);
+      }
     } else if (currentQuestion === questions.length - 1) {
       setAssessmentData({
         questions,
         answers,
+        currentQuestion,
       });
       setScreen(2);
     }
@@ -137,8 +142,12 @@ function AssessmentCard({ setScreen, setAssessmentData }) {
 
   const handlePrevious = () => {
     if (currentQuestion > 0) {
-      setCurrentQuestion((prev) => prev - 1);
-      setSelectedValue(answers[currentQuestion - 1] || null);
+      const prevQuestion = currentQuestion - 1;
+      setCurrentQuestion(prevQuestion);
+      setSelectedValue(answers[prevQuestion] || null);
+      if (onQuestionChange) {
+        onQuestionChange(prevQuestion);
+      }
     }
   };
 
