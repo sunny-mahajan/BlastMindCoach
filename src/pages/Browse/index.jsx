@@ -21,7 +21,7 @@ function BrowsePage() {
   let { tutorials } = useContent("tutorials");
   tutorials = [
     {
-      title: "Favourites",
+      title: "favorite",
       data: tutorials.filter((item) => item.genre === "mathematics"),
     },
     {
@@ -33,7 +33,7 @@ function BrowsePage() {
   let { courses } = useContent("courses");
   courses = [
     {
-      title: "Favourites",
+      title: "favorite",
       data: courses.filter((item) => item.genre === "mathematics"),
     },
     {

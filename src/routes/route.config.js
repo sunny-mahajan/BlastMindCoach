@@ -15,9 +15,11 @@ export const userRouter = [
   {
     path: "/",
     component: asyncComponent(() => import("../pages/Home/index")),
+    protected: true,
   },
   {
     path: "/browse",
     component: asyncComponent(() => import("../pages/Browse/index")),
+    protected: true,
   },
 ];

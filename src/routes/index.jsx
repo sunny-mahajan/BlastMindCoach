@@ -1,14 +1,27 @@
 import { Routes, Route } from "react-router-dom";
 import { authRouter, userRouter } from "./route.config";
+import ProtectedRoute from "./protectedRoute";
 
 const Router = () => {
   return (
     <Routes>
       {authRouter.map((route, index) => (
-        <Route key={index} path={route.path} element={route.component} />
+        <Route key={index} path={route.path} element={<route.component />} />
       ))}
       {userRouter.map((route, index) => (
-        <Route key={index} path={route.path} element={route.component} />
+        <Route
+          key={index}
+          path={route.path}
+          element={
+            route.protected ? (
+              <ProtectedRoute>
+                <route.component />
+              </ProtectedRoute>
+            ) : (
+              <route.component />
+            )
+          }
+        />
       ))}
     </Routes>
   );
