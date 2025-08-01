@@ -20,4 +20,8 @@ export const userRouter = [
     path: "/browse",
     component: asyncComponent(() => import("../pages/Browse")),
   },
+  {
+    path: "/brain-state-assessment",
+    component: asyncComponent(() => import("../pages/BrainState")),
+  },
 ];

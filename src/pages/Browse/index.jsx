@@ -17,8 +17,10 @@ import PlayerVideo from "../../components/Movies/PlayerVideo";
 import PlayerOverlay from "../../components/Movies/PlayerOverlay";
 import FooterCompound from "../../compounds/FooterCompound";
 import TeaPlanSubSections from "../../components/TeaPlan/TeaPlanSubSections";
+import { useNavigate } from "react-router";
 
 function BrowsePage() {
+  const navigate = useNavigate();
   let { tutorials } = useContent("tutorials");
   tutorials = [
     {
@@ -52,6 +54,8 @@ function BrowsePage() {
   const handleTeaPlanClick = (itemSlug) => {
     if (itemSlug === "tea-plan") {
       setShowTeaPlanSection(!showTeaPlanSection);
+    } else if (itemSlug === "brain-state") {
+      navigate("/brain-state-assessment");
     } else {
       setShowTeaPlanSection(false);
     }
@@ -178,7 +182,10 @@ function BrowsePage() {
         ))}
       </AllSlidesWrapper>
       {showTeaPlanSection && teaPlanItem && teaPlanItem.subSection && (
-        <TeaPlanSubSections subSections={teaPlanItem.subSection} parentItem={teaPlanItem} />
+        <TeaPlanSubSections
+          subSections={teaPlanItem.subSection}
+          parentItem={teaPlanItem}
+        />
       )}
       <FooterCompound />
     </>
