@@ -77,7 +77,6 @@ const ProfileItem = styled.div`
   cursor: pointer;
   transition: transform 0.3s ease;
 
-
   &:hover p {
     color: #fff;
     font-weight: bold;
@@ -168,7 +167,7 @@ export default function ProfilesPage() {
     { id: "3", name: "Kids", type: "kids" },
   ];
 
-  const handleProfileClick = (profile) => {
+  const handleProfileClick = () => {
     navigate(ROUTES.BROWSE);
   };
 
@@ -179,7 +178,7 @@ export default function ProfilesPage() {
         {profiles.map((profile) => (
           <ProfileItem
             key={profile.id}
-            onClick={() => handleProfileClick(profile)}
+            onClick={() => handleProfileClick()}
           >
             <ProfilePicture type={profile.type}>
               {profile.type === "kids" ? (
@@ -200,10 +199,22 @@ export default function ProfilesPage() {
             <ProfileName>{profile.name}</ProfileName>
           </ProfileItem>
         ))}
-
       </ProfileRow>
       <div style={{ marginTop: "20px" }}>
-        <button type="button" style={{ padding: "15px", border: "1px solid grey", borderRadius: 10, background: "none", color: "grey" }} onClick={() => console.log("Add profile clicked")}>Manage Profile</button></div>
+        <button
+          type="button"
+          style={{
+            padding: "15px",
+            border: "1px solid grey",
+            borderRadius: 10,
+            background: "none",
+            color: "grey",
+          }}
+          onClick={() => console.log("Add profile clicked")}
+        >
+          Manage Profile
+        </button>
+      </div>
     </ProfilesContainer>
   );
 }
