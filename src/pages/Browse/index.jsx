@@ -52,6 +52,8 @@ function BrowsePage() {
   const handleTeaPlanClick = (itemSlug) => {
     if (itemSlug === "tea-plan") {
       setShowTeaPlanSection(!showTeaPlanSection);
+    } else {
+      setShowTeaPlanSection(false);
     }
   };
 
