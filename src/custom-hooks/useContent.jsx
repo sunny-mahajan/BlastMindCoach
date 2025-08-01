@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { tutorials, courses } from "../seed";
+import { tutorials, courses } from "../constants/browseData";
 
 function useContent(target) {
   const [content, setContent] = useState([]);
