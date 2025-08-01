@@ -37,25 +37,81 @@ export const tutorials = [
     level: "advanced",
     slug: "tea-plan",
     isTeaPlan: true,
+    image: "../images/courses/mathematics/tea-plan/small.png",
     subSection: [
-      {
-        id: "1676f4ae-d81b-426b-9516-e578c773950e",
-        title: "Number Theory",
-        description:
-          "Explore prime numbers, modular arithmetic, and other fundamental concepts in pure mathematics.",
-        genre: "mathematics",
-        level: "advanced",
-        slug: "tea-plan",
-      },
-      {
-        id: "1676f4ae-d81b-426b-9516-e578c773950e",
-        title: "Number Theory",
-        description:
-          "Explore prime numbers, modular arithmetic, and other fundamental concepts in pure mathematics.",
-        genre: "mathematics",
-        level: "advanced",
-        slug: "tea-plan",
-      },
+      [
+        {
+          id: "1676f4ae-d81b-426b-9516-e578c773952e",
+          title: "Number Theory",
+          description:
+            "Explore prime numbers, modular arithmetic, and other fundamental concepts in pure mathematics.",
+          genre: "mathematics",
+          level: "advanced",
+          slug: "tea-plan",
+          type: "training",
+          image: "../images/courses/mathematics/tea-plan/training/10.png",
+        },
+        {
+          id: "1676f4ae-d81b-426b-9516-e578c773953e",
+          title: "Number Theory",
+          description:
+            "Explore prime numbers, modular arithmetic, and other fundamental concepts in pure mathematics.",
+          genre: "mathematics",
+          level: "advanced",
+          slug: "tea-plan",
+          type: "tool",
+          image: "../images/courses/mathematics/tea-plan/tool/5.png",
+        },
+      ],
+
+      [
+        {
+          id: "1676f4ae-d81b-426b-9516-e578c773958e",
+          title: "Number Theory",
+          description:
+            "Explore prime numbers, modular arithmetic, and other fundamental concepts in pure mathematics.",
+          genre: "mathematics",
+          level: "advanced",
+          slug: "tea-plan",
+          type: "training",
+          image: "../images/courses/mathematics/tea-plan/training/11.png",
+        },
+        {
+          id: "1676f4ae-d81b-426b-9516-e578c773950e",
+          title: "Number Theory",
+          description:
+            "Explore prime numbers, modular arithmetic, and other fundamental concepts in pure mathematics.",
+          genre: "mathematics",
+          level: "advanced",
+          slug: "tea-plan",
+          type: "tool",
+          image: "../images/courses/mathematics/tea-plan/tool/6.png",
+        },
+      ],
+      [
+        {
+          id: "1676f4ae-d81b-426b-9516-e578c773957e",
+          title: "Number Theory",
+          description:
+            "Explore prime numbers, modular arithmetic, and other fundamental concepts in pure mathematics.",
+          genre: "mathematics",
+          level: "advanced",
+          slug: "tea-plan",
+          type: "training",
+          image: "../images/courses/mathematics/tea-plan/training/12.png",
+        },
+        {
+          id: "1676f4ae-d81b-426b-9516-e578c773983e",
+          title: "Number Theory",
+          description:
+            "Explore prime numbers, modular arithmetic, and other fundamental concepts in pure mathematics.",
+          genre: "mathematics",
+          level: "advanced",
+          slug: "tea-plan",
+          type: "tool",
+          image: "../images/courses/mathematics/tea-plan/tool/7.png",
+        },
+      ],
     ],
   },
   {
@@ -200,25 +256,81 @@ export const courses = [
     level: "advanced",
     slug: "tea-plan",
     isTeaPlan: true,
+    image: "../images/courses/mathematics/tea-plan/small.png",
     subSection: [
-      {
-        id: "1676f4ae-d81b-426b-9516-e578c773950e",
-        title: "Number Theory",
-        description:
-          "Explore prime numbers, modular arithmetic, and other fundamental concepts in pure mathematics.",
-        genre: "mathematics",
-        level: "advanced",
-        slug: "tea-plan",
-      },
-      {
-        id: "1676f4ae-d81b-426b-9516-e578c773950e",
-        title: "Number Theory",
-        description:
-          "Explore prime numbers, modular arithmetic, and other fundamental concepts in pure mathematics.",
-        genre: "mathematics",
-        level: "advanced",
-        slug: "tea-plan",
-      },
+      [
+        {
+          id: "1676f4ae-d81b-426b-9516-e578c773952e",
+          title: "Number Theory",
+          description:
+            "Explore prime numbers, modular arithmetic, and other fundamental concepts in pure mathematics.",
+          genre: "mathematics",
+          level: "advanced",
+          slug: "tea-plan",
+          type: "training",
+          image: "../images/courses/mathematics/tea-plan/training/10.png",
+        },
+        {
+          id: "1676f4ae-d81b-426b-9516-e578c773953e",
+          title: "Number Theory",
+          description:
+            "Explore prime numbers, modular arithmetic, and other fundamental concepts in pure mathematics.",
+          genre: "mathematics",
+          level: "advanced",
+          slug: "tea-plan",
+          type: "tool",
+          image: "../images/courses/mathematics/tea-plan/tool/5.png",
+        },
+      ],
+
+      [
+        {
+          id: "1676f4ae-d81b-426b-9516-e578c773958e",
+          title: "Number Theory",
+          description:
+            "Explore prime numbers, modular arithmetic, and other fundamental concepts in pure mathematics.",
+          genre: "mathematics",
+          level: "advanced",
+          slug: "tea-plan",
+          type: "training",
+          image: "../images/courses/mathematics/tea-plan/training/11.png",
+        },
+        {
+          id: "1676f4ae-d81b-426b-9516-e578c773950e",
+          title: "Number Theory",
+          description:
+            "Explore prime numbers, modular arithmetic, and other fundamental concepts in pure mathematics.",
+          genre: "mathematics",
+          level: "advanced",
+          slug: "tea-plan",
+          type: "tool",
+          image: "../images/courses/mathematics/tea-plan/tool/6.png",
+        },
+      ],
+      [
+        {
+          id: "1676f4ae-d81b-426b-9516-e578c773957e",
+          title: "Number Theory",
+          description:
+            "Explore prime numbers, modular arithmetic, and other fundamental concepts in pure mathematics.",
+          genre: "mathematics",
+          level: "advanced",
+          slug: "tea-plan",
+          type: "training",
+          image: "../images/courses/mathematics/tea-plan/training/12.png",
+        },
+        {
+          id: "1676f4ae-d81b-426b-9516-e578c773983e",
+          title: "Number Theory",
+          description:
+            "Explore prime numbers, modular arithmetic, and other fundamental concepts in pure mathematics.",
+          genre: "mathematics",
+          level: "advanced",
+          slug: "tea-plan",
+          type: "tool",
+          image: "../images/courses/mathematics/tea-plan/tool/7.png",
+        },
+      ],
     ],
     type: "tool",
   },

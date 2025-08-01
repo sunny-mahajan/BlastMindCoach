@@ -176,7 +176,7 @@ function BrowsePage() {
         ))}
       </AllSlidesWrapper>
       {showTeaPlanSection && teaPlanItem && teaPlanItem.subSection && (
-        <TeaPlanSubSections subSections={teaPlanItem.subSection} />
+        <TeaPlanSubSections subSections={teaPlanItem.subSection} parentItem={teaPlanItem} />
       )}
       <FooterCompound />
     </>
