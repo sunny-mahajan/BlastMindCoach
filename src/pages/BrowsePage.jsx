@@ -25,7 +25,7 @@ function BrowsePage() {
       data: tutorials.filter((item) => item.genre === "mathematics"),
     },
     {
-      title: "AI-Edge Habit Mechanic Organizational Transform Program",
+      title: "AI-Edge Habit Mechanic ® Organizational Transform Program",
       data: tutorials.filter((item) => item.genre === "science"),
     },
   ];
@@ -37,7 +37,7 @@ function BrowsePage() {
       data: courses.filter((item) => item.genre === "mathematics"),
     },
     {
-      title: "AI-Edge Habit Mechanic Organizational Transform Program",
+      title: "AI-Edge Habit Mechanic ® Organizational Transform Program",
       data: courses.filter((item) => item.genre === "science"),
     },
   ];
