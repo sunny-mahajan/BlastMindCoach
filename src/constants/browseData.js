@@ -37,6 +37,7 @@ export const tutorials = [
     level: "advanced",
     slug: "tea-plan",
     isTeaPlan: true,
+    type: "tool",
     image: "../images/courses/mathematics/tea-plan/small.png",
     subSection: [
       [
