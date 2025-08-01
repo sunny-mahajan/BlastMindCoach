@@ -13,8 +13,6 @@ import SlideTitle from "../components/Movies/SlideTitle";
 import AllCardsWrapper from "../components/Movies/AllCardsWrapper";
 import CardWrapper from "../components/Movies/CardWrapper";
 import CardImage from "../components/Movies/CardImage";
-import CardTitle from "../components/Movies/CardTitle";
-import CardDescription from "../components/Movies/CardDescription";
 import PlayerVideo from "../components/Movies/PlayerVideo";
 import PlayerOverlay from "../components/Movies/PlayerOverlay";
 import FooterCompound from "../compounds/FooterCompound";
@@ -23,11 +21,11 @@ function BrowsePage() {
   let { tutorials } = useContent("tutorials");
   tutorials = [
     {
-      title: "Mathematics",
+      title: "Favourites",
       data: tutorials.filter((item) => item.genre === "mathematics"),
     },
     {
-      title: "Science",
+      title: "AI-Edge Habit Mechanic Organizational Transform Program",
       data: tutorials.filter((item) => item.genre === "science"),
     },
   ];
@@ -35,11 +33,11 @@ function BrowsePage() {
   let { courses } = useContent("courses");
   courses = [
     {
-      title: "Mathematics",
+      title: "Favourites",
       data: courses.filter((item) => item.genre === "mathematics"),
     },
     {
-      title: "Science",
+      title: "AI-Edge Habit Mechanic Organizational Transform Program",
       data: courses.filter((item) => item.genre === "science"),
     },
   ];
@@ -53,7 +51,7 @@ function BrowsePage() {
     <>
       <HeaderWrapper className="header-wrapper-browse">
         <NavBar className="navbar-browse">
-          <p className="navbar-brand-text">BlastMindCoach</p>
+          <p className="navbar-brand-text">Blast Mind Coach</p>
           <div className="navbar-links-wrapper">
             <HeaderLink
               className={
@@ -156,7 +154,7 @@ function BrowsePage() {
                   category={category}
                 >
                   <CardImage
-                    src={`../images/${category}/${cardItem.genre}/${cardItem.slug}/small.jpg`}
+                    src={`../images/${category}/${cardItem.genre}/${cardItem.slug}/small.png`}
                   />
                 </CardWrapper>
               ))}

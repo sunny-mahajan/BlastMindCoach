@@ -4,7 +4,7 @@ import "./MoviesStyles.css";
 function SlideTitle({ children, ...restProps }) {
   return (
     <div className="slide-title" {...restProps}>
-      {children}
+      <div className="title">{children}</div>
     </div>
   );
 }

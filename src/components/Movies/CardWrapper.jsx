@@ -18,7 +18,7 @@ function CardWrapper({ item, category, ...restProps }) {
     >
       {/* CardImage is always visible */}
       <CardImage
-        src={`/images/${category}/${item.genre}/${item.slug}/small.jpg`}
+        src={`/images/${category}/${item.genre}/${item.slug}/small.png`}
       />
 
       {showDetails && (
