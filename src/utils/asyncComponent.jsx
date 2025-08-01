@@ -1,13 +1,12 @@
 import React, { lazy, Suspense } from "react";
+import ScreenLoader from "../components/ScreenLoader";
 
-// Usage: asyncComponent(() => import("../pages/SomePage"))
 const asyncComponent = (importFunc) => {
   const LazyComponent = lazy(importFunc);
 
-  // Return a component that wraps with Suspense (customize fallback as needed)
   return function AsyncComponentWrapper(props) {
     return (
-      <Suspense fallback={null}>
+      <Suspense fallback={<ScreenLoader />}>
         <LazyComponent {...props} />
       </Suspense>
     );
