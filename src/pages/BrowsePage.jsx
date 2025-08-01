@@ -30,17 +30,18 @@ function BrowsePage() {
       title: "Science",
       data: tutorials.filter((item) => item.genre === "science"),
     },
-    
   ];
 
   let { courses } = useContent("courses");
   courses = [
-    { title: "Mathematics", data: courses.filter((item) => item.genre === "mathematics") },
+    {
+      title: "Mathematics",
+      data: courses.filter((item) => item.genre === "mathematics"),
+    },
     {
       title: "Science",
       data: courses.filter((item) => item.genre === "science"),
     },
-
   ];
 
   const [category, setCategory] = useState("courses");
@@ -52,9 +53,7 @@ function BrowsePage() {
     <>
       <HeaderWrapper className="header-wrapper-browse">
         <NavBar className="navbar-browse">
-          <p className="navbar-brand-text">
-            BlastMindCoach
-          </p>
+          <p className="navbar-brand-text">BlastMindCoach</p>
           <div className="navbar-links-wrapper">
             <HeaderLink
               className={
@@ -84,7 +83,9 @@ function BrowsePage() {
           </div>
 
           {showBurgerMenu && (
-            <div className={`burger-menu-overlay ${showBurgerMenu ? 'open' : ''}`}>
+            <div
+              className={`burger-menu-overlay ${showBurgerMenu ? "open" : ""}`}
+            >
               <div className="burger-menu-content">
                 <img
                   src="./images/icons/close-slim.png"
@@ -105,7 +106,9 @@ function BrowsePage() {
                 </HeaderLink>
                 <HeaderLink
                   className={
-                    category === "tutorials" ? "header-link-bold" : "header-link"
+                    category === "tutorials"
+                      ? "header-link-bold"
+                      : "header-link"
                   }
                   onClick={() => {
                     setCategory("tutorials");
@@ -123,9 +126,10 @@ function BrowsePage() {
             Unlock Learning Like Never Before
           </FeatureTitle>
           <FeatureSubTitle className="feature-subtitle-browse">
-            Master Math, Science, English, and more with our interactive learning platform.
-            Get personalized lessons, real-time feedback, and smart progress tracking.
-            Learn at your own pace and build confidence every step of the way.
+            Master Math, Science, English, and more with our interactive
+            learning platform. Get personalized lessons, real-time feedback, and
+            smart progress tracking. Learn at your own pace and build confidence
+            every step of the way.
           </FeatureSubTitle>
           <PlayButton onClick={() => setShowPlayer(true)}>Play</PlayButton>
           {showPlayer ? (
@@ -136,7 +140,7 @@ function BrowsePage() {
         </FeatureWrapper>
       </HeaderWrapper>
 
-      <AllSlidesWrapper style={{ width: "100%"}}>
+      <AllSlidesWrapper style={{ width: "100%" }}>
         {currentCategory.map((slideItem) => (
           <SlideWrapper
             key={`${category}-${slideItem.title.toLowerCase()}`}
@@ -146,7 +150,11 @@ function BrowsePage() {
 
             <AllCardsWrapper>
               {slideItem.data.map((cardItem) => (
-                <CardWrapper key={cardItem.id} item={cardItem} category={category}>
+                <CardWrapper
+                  key={cardItem.id}
+                  item={cardItem}
+                  category={category}
+                >
                   <CardImage
                     src={`../images/${category}/${cardItem.genre}/${cardItem.slug}/small.jpg`}
                   />
