@@ -1,0 +1,17 @@
+export const questions = [
+    "😟 I find myself responding to urgent issues instead of having a plan (or sticking to my plan).",
+    "🧠 I get interrupted (by others, emails/phone, and my own self-doubt/negative self-talk) and it takes me longer to complete my work.",
+    "⚡ I sleep poorly and it takes longer to complete my work to a high standard.",
+    "📱 I waste time doubting my decisions, second-guessing myself, and beating myself up.",
+    "🤝 My mind feels foggy and it slows down my work",
+    "😴 I put off important tasks even though I know they need doing.",
+    "🎯 I feel overwhelmed and I make mistakes that take time to fix",
+    "💭 I find myself scrolling social media when I know it is not a good use of my time.",
+    "⏰ I sleep poorly and it makes it harder to spot and prevent mistakes in my work",
+    "🤝 My mind jumps between tasks instead of focusing on one thing.",
+    "🔄 I get distracted (including by my own self-doubt/negative self-talk).",
+    "🎪 I feel like I could achieve more if I felt more confident and focused. ",
+    "😰 I waste time because I’m not thinking clearly.",
+    "🤝 My diet choices leave me feeling sluggish and it takes me longer to complete my work.",
+    "🤝 Lack of regular exercise (10,000+ steps, elevated heart rate) reduces my mental energy and focus. ",
+];

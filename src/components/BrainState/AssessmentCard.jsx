@@ -1,13 +1,7 @@
 import React, { useState } from "react";
-import {
-  Modal,
-  Box,
-  Typography,
-  Button,
-  IconButton,
-  Paper,
-} from "@mui/material";
+import { Box, Typography, Button, Paper } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { questions } from "../../constants/brainStateQuestions";
 
 const GradientContainer = styled(Box)(() => ({
   width: "100%",
@@ -30,8 +24,8 @@ const ProgressDot = styled(Box)(({ active, completed }) => ({
   backgroundColor: completed
     ? "#fff"
     : active
-    ? "#fff"
-    : "rgba(255,255,255,0.4)",
+      ? "#fff"
+      : "rgba(255,255,255,0.4)",
   transition: "all 0.3s ease",
 }));
 
@@ -90,24 +84,6 @@ const NavigationContainer = styled(Box)({
   marginTop: "20px",
 });
 
-const questions = [
-  "😟 I find myself responding to urgent issues instead of having a plan (or sticking to my plan).",
-  "🧠 I get interrupted (by others, emails/phone, and my own self-doubt/negative self-talk) and it takes me longer to complete my work.",
-  "⚡ I sleep poorly and it takes longer to complete my work to a high standard.",
-  "📱 I waste time doubting my decisions, second-guessing myself, and beating myself up.",
-  "🤝 My mind feels foggy and it slows down my work",
-  "😴 I put off important tasks even though I know they need doing.",
-  "🎯 I feel overwhelmed and I make mistakes that take time to fix",
-  "💭 I find myself scrolling social media when I know it is not a good use of my time.",
-  "⏰ I sleep poorly and it makes it harder to spot and prevent mistakes in my work",
-  "🤝 My mind jumps between tasks instead of focusing on one thing.",
-  "🔄 I get distracted (including by my own self-doubt/negative self-talk).",
-  "🎪 I feel like I could achieve more if I felt more confident and focused. ",
-  "😰 I waste time because I’m not thinking clearly.",
-  "🤝 My diet choices leave me feeling sluggish and it takes me longer to complete my work.",
-  "🤝 Lack of regular exercise (10,000+ steps, elevated heart rate) reduces my mental energy and focus. ",
-];
-
 function AssessmentCard({ setScreen, setAssessmentData, onQuestionChange }) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState({});
@@ -121,23 +97,28 @@ function AssessmentCard({ setScreen, setAssessmentData, onQuestionChange }) {
       if (onQuestionChange) {
         onQuestionChange(nextQuestion);
       }
-    } else if (currentQuestion === questions.length - 1) {
-      setAssessmentData({
-        questions,
-        answers,
-        currentQuestion,
-      });
-      setScreen(2);
     }
   };
 
   const handleScaleSelect = (value) => {
-    setSelectedValue(value);
-    setAnswers((prev) => ({
-      ...prev,
+    const updatedAnswers = {
+      ...answers,
       [currentQuestion]: value,
-    }));
-    handleNext();
+    };
+
+    setSelectedValue(value);
+    setAnswers(updatedAnswers);
+
+    if (currentQuestion === questions.length - 1) {
+      setAssessmentData({
+        questions,
+        answers: updatedAnswers,
+        currentQuestion,
+      });
+      setScreen(2);
+    } else {
+      handleNext();
+    }
   };
 
   const handlePrevious = () => {
@@ -153,7 +134,6 @@ function AssessmentCard({ setScreen, setAssessmentData, onQuestionChange }) {
 
   return (
     <GradientContainer>
-      {/* Progress Dots */}
       <ProgressDots>
         {questions.map((_, index) => (
           <ProgressDot
@@ -164,7 +144,6 @@ function AssessmentCard({ setScreen, setAssessmentData, onQuestionChange }) {
         ))}
       </ProgressDots>
 
-      {/* Question Text */}
       <Typography
         variant="h6"
         sx={{
@@ -218,13 +197,13 @@ function AssessmentCard({ setScreen, setAssessmentData, onQuestionChange }) {
           onClick={handlePrevious}
           disabled={currentQuestion === 0}
           sx={{
-            backgroundColor: "rgba(255,255,255,0.2)",
-            color: "white",
+            backgroundColor: "#fff",
+            color: "#000",
             borderRadius: "20px",
             textTransform: "none",
             padding: "8px 24px",
             "&:hover": {
-              backgroundColor: "rgba(255,255,255,0.3)",
+              backgroundColor: "#fff",
             },
             "&:disabled": {
               backgroundColor: "rgba(255,255,255,0.1)",

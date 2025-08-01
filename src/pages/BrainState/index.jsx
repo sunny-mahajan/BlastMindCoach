@@ -18,7 +18,6 @@ const BrainState = () => {
     >
       <Box
         sx={{
-          bgcolor: "#f9f9f9",
           borderRadius: 2,
           p: { xs: 2, sm: 3 },
           mb: 3,
@@ -47,7 +46,6 @@ const BrainState = () => {
             sx={{
               width: 24,
               height: 24,
-              backgroundColor: "#f44336",
               borderRadius: "50%",
               display: "flex",
               alignItems: "center",
