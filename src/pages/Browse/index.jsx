@@ -1,27 +1,27 @@
 import React, { useState } from "react";
-import useContent from "../custom-hooks/useContent";
-import HeaderWrapper from "../components/Header/HeaderWrapper";
-import NavBar from "../components/Header/NavBar";
-import FeatureWrapper from "../components/Header/FeatureWrapper";
-import FeatureTitle from "../components/Header/FeatureTitle";
-import FeatureSubTitle from "../components/Header/FeatureSubTitle";
-import PlayButton from "../components/Header/PlayButton";
-import HeaderLink from "../components/Header/HeaderLink";
-import AllSlidesWrapper from "../components/Movies/AllSlidesWrapper";
-import SlideWrapper from "../components/Movies/SlideWrapper";
-import SlideTitle from "../components/Movies/SlideTitle";
-import AllCardsWrapper from "../components/Movies/AllCardsWrapper";
-import CardWrapper from "../components/Movies/CardWrapper";
-import CardImage from "../components/Movies/CardImage";
-import PlayerVideo from "../components/Movies/PlayerVideo";
-import PlayerOverlay from "../components/Movies/PlayerOverlay";
-import FooterCompound from "../compounds/FooterCompound";
+import useContent from "../../custom-hooks/useContent";
+import HeaderWrapper from "../../components/Header/HeaderWrapper";
+import NavBar from "../../components/Header/NavBar";
+import FeatureWrapper from "../../components/Header/FeatureWrapper";
+import FeatureTitle from "../../components/Header/FeatureTitle";
+import FeatureSubTitle from "../../components/Header/FeatureSubTitle";
+import PlayButton from "../../components/Header/PlayButton";
+import HeaderLink from "../../components/Header/HeaderLink";
+import AllSlidesWrapper from "../../components/Movies/AllSlidesWrapper";
+import SlideWrapper from "../../components/Movies/SlideWrapper";
+import SlideTitle from "../../components/Movies/SlideTitle";
+import AllCardsWrapper from "../../components/Movies/AllCardsWrapper";
+import CardWrapper from "../../components/Movies/CardWrapper";
+import CardImage from "../../components/Movies/CardImage";
+import PlayerVideo from "../../components/Movies/PlayerVideo";
+import PlayerOverlay from "../../components/Movies/PlayerOverlay";
+import FooterCompound from "../../compounds/FooterCompound";
 
 function BrowsePage() {
   let { tutorials } = useContent("tutorials");
   tutorials = [
     {
-      title: "favorite",
+      title: "Favorites",
       data: tutorials.filter((item) => item.genre === "mathematics"),
     },
     {
@@ -33,7 +33,7 @@ function BrowsePage() {
   let { courses } = useContent("courses");
   courses = [
     {
-      title: "favorite",
+      title: "Favorites",
       data: courses.filter((item) => item.genre === "mathematics"),
     },
     {

@@ -10,7 +10,7 @@ function App() {
     <LoadingProvider>
       <LoaderBar />
       <BrowserRouter>
-        <ProfilesPage />
+        <Router />
       </BrowserRouter>
     </LoadingProvider>
   );

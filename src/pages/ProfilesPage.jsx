@@ -167,6 +167,7 @@ function ProfilesPage() {
   ];
 
   const handleProfileClick = () => {
+    // Navigate to the home page or profile details
     navigate("/browse");
   };
 
@@ -175,10 +176,7 @@ function ProfilesPage() {
       <Title>Who's watching?</Title>
       <ProfileRow>
         {profiles.map((profile) => (
-          <ProfileItem
-            key={profile.id}
-            onClick={() => handleProfileClick()}
-          >
+          <ProfileItem key={profile.id} onClick={() => handleProfileClick()}>
             <ProfilePicture type={profile.type}>
               {profile.type === "kids" ? (
                 <KidsLabel>kids</KidsLabel>

@@ -9,6 +9,7 @@ import CardImage from "./CardImage"; // Import CardImage
 function CardWrapper({ item, category, ...restProps }) {
   const [showDetails, setShowDetails] = useState(false);
 
+  console.log("CardWrapper item:", item);
   return (
     <div
       className="card-wrapper"
@@ -26,15 +27,21 @@ function CardWrapper({ item, category, ...restProps }) {
           <CardTitle>{item.title}</CardTitle>
           <CardDescription>{item.description}</CardDescription>
           {/* Remove PlayButton if not needed */}
-          <PlayerOverlay onClick={() => setShowDetails(false)}>
-            <PlayerVideo
-              src="../videos/video.mp4"
-              type="video/mp4"
-              autoPlay
-              muted // Optional: prevents autoplay issues in browsers
-              controls={false} // Optional: hide controls if you want
+          {item.slug !== "tea-plan" ? (
+            <PlayerOverlay onClick={() => setShowDetails(false)}>
+              <PlayerVideo
+                src="../videos/video.mp4"
+                type="video/mp4"
+                autoPlay
+                muted // Optional: prevents autoplay issues in browsers
+                controls={false} // Optional: hide controls if you want
+              />
+            </PlayerOverlay>
+          ) : (
+            <CardImage
+              src={`/images/${category}/${item.genre}/${item.slug}/small.png`}
             />
-          </PlayerOverlay>
+          )}
         </div>
       )}
     </div>
