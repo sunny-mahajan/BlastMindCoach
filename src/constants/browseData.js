@@ -6,7 +6,8 @@ export const tutorials = [
       "Master multivariable calculus, differential equations, and advanced integration techniques.",
     genre: "mathematics",
     level: "advanced",
-    slug: "advanced-calculus",
+    slug: "brain-state",
+    type: "tool",
   },
   {
     id: "2d1b09b9-d29b-449e-8c34-71239c065f4d",
@@ -25,6 +26,7 @@ export const tutorials = [
     genre: "science",
     level: "advanced",
     slug: "quantum-physics",
+    type: "tool",
   },
   {
     id: "1676f4ae-d81b-426b-9516-e578c773950e",
@@ -118,7 +120,7 @@ export const tutorials = [
       "Fun, interactive lessons introducing basic arithmetic, shapes, and patterns for young learners.",
     genre: "mathematics",
     level: "beginner",
-    slug: "advanced-calculus",
+    slug: "brain-state",
   },
   {
     id: "4444747a-1313-432d-930b-93e18a937a09",
@@ -128,6 +130,7 @@ export const tutorials = [
     genre: "science",
     level: "beginner",
     slug: "quantum-physics",
+    type: "tool",
   },
   {
     id: "d9735d44-30d8-4a94-b258-299587441112",
@@ -166,7 +169,8 @@ export const courses = [
       "Master multivariable calculus, differential equations, and advanced integration techniques.",
     genre: "mathematics",
     level: "advanced",
-    slug: "advanced-calculus",
+    slug: "brain-state",
+    type: "tool",
   },
   {
     id: "2d1b09b9-d29b-449e-8c34-71239c065f4d",
@@ -184,7 +188,8 @@ export const courses = [
       "Explore the strange world of quantum mechanics, wave-particle duality, and quantum states.",
     genre: "science",
     level: "advanced",
-    slug: "quantum-physics",
+    slug: "brain-state",
+    type: "tool",
   },
   {
     id: "1676f4ae-d81b-426b-9516-e578c773950e",
@@ -215,6 +220,7 @@ export const courses = [
         slug: "tea-plan",
       },
     ],
+    type: "tool",
   },
   {
     id: "4b87053e-3685-450f-90e8-070857790b50",
@@ -224,6 +230,7 @@ export const courses = [
     genre: "mathematics",
     level: "intermediate",
     slug: "discrete-math",
+    type: "tool",
   },
   {
     id: "0559f338-8921-4f93-b4e8-8798e16ae317",
@@ -252,6 +259,7 @@ export const courses = [
     genre: "mathematics",
     level: "advanced",
     slug: "optimal-activation-review",
+    type: "tool",
   },
   {
     id: "8c35b1d5-2a29-4e0d-b847-b35319808a3d",
@@ -261,6 +269,7 @@ export const courses = [
     genre: "science",
     level: "intermediate",
     slug: "tea-plan",
+    type: "tool",
   },
   {
     id: "277e923e-63f6-4d2d-8b01-1e247b952219",
@@ -270,6 +279,7 @@ export const courses = [
     genre: "mathematics",
     level: "advanced",
     slug: "fam-story",
+    type: "tool",
   },
   {
     id: "186a117b-d248-4389-9e8c-57224f8d55a3",
@@ -278,7 +288,8 @@ export const courses = [
       "Fun, interactive lessons introducing basic arithmetic, shapes, and patterns for young learners.",
     genre: "mathematics",
     level: "beginner",
-    slug: "advanced-calculus",
+    slug: "brain-state",
+    type: "tool",
   },
   {
     id: "4444747a-1313-432d-930b-93e18a937a09",
@@ -287,7 +298,8 @@ export const courses = [
       "Engaging experiments and explanations of basic scientific concepts for elementary students.",
     genre: "science",
     level: "beginner",
-    slug: "quantum-physics",
+    slug: "brain-state",
+    type: "tool",
   },
   {
     id: "d9735d44-30d8-4a94-b258-299587441112",
@@ -306,6 +318,7 @@ export const courses = [
     genre: "mathematics",
     level: "advanced",
     slug: "fam-story",
+    type: "tool",
   },
   {
     id: "721c54b3-c1c0-488f-a912-39c8116938a9",
@@ -315,5 +328,6 @@ export const courses = [
     genre: "science",
     level: "intermediate",
     slug: "tea-plan",
+    type: "tool",
   },
 ];

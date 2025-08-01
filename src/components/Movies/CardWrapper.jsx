@@ -27,7 +27,7 @@ function CardWrapper({ item, category, onCardClick, ...restProps }) {
           <CardTitle>{item.title}</CardTitle>
           <CardDescription>{item.description}</CardDescription>
           {/* Remove PlayButton if not needed */}
-          {item.slug !== "tea-plan" ? (
+          {item.type !== "tool" ? (
             <PlayerOverlay onClick={() => setShowDetails(false)}>
               <PlayerVideo
                 src="../videos/video.mp4"
