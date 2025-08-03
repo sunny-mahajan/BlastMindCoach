@@ -22,6 +22,7 @@ import { useNavigate } from "react-router";
 function BrowsePage() {
   const navigate = useNavigate();
   let { tutorials } = useContent("tutorials");
+  
   tutorials = [
     {
       title: "Favorites",
@@ -50,6 +51,7 @@ function BrowsePage() {
   const [showPlayer, setShowPlayer] = useState(false);
   const [showBurgerMenu, setShowBurgerMenu] = useState(false);
   const [showTeaPlanSection, setShowTeaPlanSection] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
 
   const handleTeaPlanClick = (itemSlug) => {
     if (itemSlug === "tea-plan") {
@@ -165,23 +167,63 @@ function BrowsePage() {
             <SlideTitle>{slideItem.title}</SlideTitle>
 
             <AllCardsWrapper>
-              {slideItem.data.map((cardItem) => (
-                <CardWrapper
-                  key={cardItem.id}
-                  item={cardItem}
-                  category={category}
-                  onCardClick={handleTeaPlanClick}
-                  itemIndex={
-                    slideItem.title === "Favorites" && category === "courses"
-                      ? slideItem.data.indexOf(cardItem) + 1
-                      : null
-                  }
-                >
-                  <CardImage
-                    src={`../images/${category}/${cardItem.genre}/${cardItem.slug}/small.png`}
-                  />
-                </CardWrapper>
-              ))}
+              {slideItem.data.map((cardItem, idx) => {
+                const isFavorites = slideItem.title === "Favorites" 
+                const isHovered = hoveredIndex === idx;
+                return (
+                  <div
+                    key={cardItem.id}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      position: "relative",
+                      marginBottom: "2rem",
+                      justifyContent: "flex-start",
+                      gap: isFavorites ? "0.5rem" : "2rem",
+                    }}
+                    onMouseEnter={() => isFavorites && setHoveredIndex(idx)}
+                    onMouseLeave={() => isFavorites && setHoveredIndex(null)}
+                  >
+                    {isFavorites && (
+                      <span
+                        style={{
+                          fontSize: "16rem",
+                          color: "rgba(255,255,255,0.15)",
+                          fontWeight: "bold",
+                          userSelect: "none",
+                          lineHeight: 1,
+                          marginRight: "0.25rem",
+                        }}
+                      >
+                        {idx + 1}
+                      </span>
+                    )}
+                    <CardWrapper
+                      item={cardItem}
+                      category={category}
+                      onCardClick={handleTeaPlanClick}
+                      style={
+                        isFavorites
+                          ? { width: "140px", minWidth: "140px" }
+                          : {}
+                      }
+                    >
+                      <CardImage
+                        style={
+                          isFavorites
+                            ? {
+                                width: "80px",
+                                height: "80px",
+                                transition: "transform 0.2s",
+                                transform: isHovered ? "scale(1.25)" : "scale(1)",
+                              }
+                            : {}
+                        }
+                      />
+                    </CardWrapper>
+                  </div>
+                );
+              })}
             </AllCardsWrapper>
           </SlideWrapper>
         ))}

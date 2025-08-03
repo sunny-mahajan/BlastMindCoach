@@ -81,7 +81,7 @@ function TeaPlanSubSections({ subSections, parentItem }) {
     <SubSectionContainer>
       <CarouselContainer>
         <ArrowButton className="left" onClick={() => scroll("left")}>
-          <ArrowBackIosIcon style={{ color: "black", fontSize: "3rem" }} />
+          <ArrowBackIosIcon style={{ color: "black", fontSize: "2rem" }} />
         </ArrowButton>
         <CarouselScroll ref={scrollRef}>
           {carouselItems.map((item) => (
@@ -89,7 +89,7 @@ function TeaPlanSubSections({ subSections, parentItem }) {
           ))}
         </CarouselScroll>
         <ArrowButton className="right" onClick={() => scroll("right")}>
-          <ArrowForwardIosIcon style={{ color: "black", fontSize: "3rem" }} />
+          <ArrowForwardIosIcon style={{ color: "black", fontSize: "2rem" }} />
         </ArrowButton>
       </CarouselContainer>
     </SubSectionContainer>

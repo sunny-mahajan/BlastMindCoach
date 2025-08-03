@@ -11,7 +11,7 @@ function CardWrapper({ item, category, onCardClick, itemIndex, ...restProps }) {
 
   return (
     <div
-      className="card-wrapper"
+      className= {item.genre !== "mathematics" ? "card-wrapper" : "card-wrapper2"}
       onMouseEnter={() => setShowDetails(true)}
       onMouseLeave={() => setShowDetails(false)}
       onClick={() => onCardClick(item.slug)}

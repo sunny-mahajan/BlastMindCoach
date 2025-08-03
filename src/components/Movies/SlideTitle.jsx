@@ -10,3 +10,4 @@ function SlideTitle({ children, ...restProps }) {
 }
 
 export default SlideTitle;
+ 

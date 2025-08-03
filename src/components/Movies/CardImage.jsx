@@ -1,10 +1,10 @@
 import React from "react";
 import "./MoviesStyles.css";
 
-function CardImage({ itemIndex, ...restProps }) {
+function CardImage({ itemIndex, title,...restProps }) {
+
   return (
     <>
-      {itemIndex && <span className="card-number">{itemIndex}</span>}
       <img className="card-image" alt="movie" {...restProps} />
     </>
   );

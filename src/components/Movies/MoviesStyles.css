@@ -70,7 +70,7 @@
 }
 
 .all-cards-wrapper-scroll {
-  display: block;
+  display: flex;
   /* Change from flex to block */
   text-align: center;
   overflow-x: hidden;
@@ -117,6 +117,42 @@
 
 .card-wrapper:hover {
   transform: scale(1.25);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Add shadow */
+  z-index: 10; /* Bring to front */
+
+  @media (max-width: 768px) {
+    transform: scale(1.1);
+  }
+
+  @media (max-width: 480px) {
+    transform: none;
+    /* Disable transform on hover for very small screens */
+  }
+}
+
+.card-wrapper2 {
+  position: relative;
+  display: inline-block;
+  /* Make cards inline-block for horizontal layout */
+  margin: 0 10px; /* Add some spacing between cards */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, z-index 0.3s ease;
+  width: 350px; /* Re-apply original image width */
+  height: 180px; /* Re-apply original image height */
+  overflow: hidden; /* Hide overflow from children if scaling occurs */
+
+  @media (max-width: 768px) {
+    width: 250px;
+    height: 140px;
+  }
+
+  @media (max-width: 480px) {
+    width: 180px;
+    height: 100px;
+  }
+}
+
+.card-wrapper2:hover {
+  transform: scaleX(3.2) scaleY(1.25); /* Wider, but same height */
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Add shadow */
   z-index: 10; /* Bring to front */
 
@@ -185,7 +221,7 @@
   height: 100%; /* Ensure image fills the wrapper */
   object-fit: fill; /* Cover the area */
   cursor: pointer;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   position: absolute; /* Position the image absolutely within the wrapper */
   top: 0;
   left: 0;
