@@ -94,7 +94,7 @@ function AssessmentCard({
   const [selectedValue, setSelectedValue] = useState(null);
 
   const handleNext = () => {
-    if (currentQuestion < questions.length - 1) {
+    if (currentQuestion < questions?.length - 1) {
       const nextQuestion = currentQuestion + 1;
       setCurrentQuestion(nextQuestion);
       setSelectedValue(answers[nextQuestion] || null);
@@ -113,7 +113,7 @@ function AssessmentCard({
     setSelectedValue(value);
     setAnswers(updatedAnswers);
 
-    if (currentQuestion === questions.length - 1) {
+    if (currentQuestion === questions?.length - 1) {
       const onlyQuestions = questions?.map((i) => i.question);
 
       setAssessmentData({
@@ -141,7 +141,7 @@ function AssessmentCard({
   return (
     <GradientContainer>
       <ProgressDots>
-        {questions.map((_, index) => (
+        {questions?.map((_, index) => (
           <ProgressDot
             key={index}
             completed={index < currentQuestion}
@@ -161,13 +161,13 @@ function AssessmentCard({
           lineHeight: 1.4,
         }}
       >
-        {currentQuestion + 1}.{questions[currentQuestion]?.question}
+        {currentQuestion + 1}.{questions?.[currentQuestion]?.question}
       </Typography>
 
       <ScaleContainer elevation={3}>
         <Box sx={{ display: "flex", gap: 1, position: "relative" }}>
           {Array.from({
-            length: questions[currentQuestion]?.typeData?.rateLength || 0,
+            length: questions?.[currentQuestion]?.typeData?.rateLength || 0,
           }).map((_, idx) => (
             <>
               {(selectedValue === 1 || selectedValue === 10) && (

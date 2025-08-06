@@ -42,7 +42,7 @@ const renderScreen = (
   const totalmarks = questions?.reduce(
     (sum, i) =>
       sum +
-      (typeof i?.typeData?.rateLength === "number" ? i.typeData.rateLength : 0),
+      (typeof i?.typeData?.rateLength === "number" ? i?.typeData.rateLength : 0),
     0
   );
 

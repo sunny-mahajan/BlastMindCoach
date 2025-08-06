@@ -1,8 +1,14 @@
 import React, { useState } from "react";
-import { Box, Typography, Paper, Divider, Button, TextField } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Paper,
+  Divider,
+  Button,
+  TextField,
+} from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { CheckCircle, Email, ShowChart } from "@mui/icons-material";
-
 
 const GradientBackground = styled(Box)({
   display: "flex",
@@ -94,7 +100,10 @@ const ActionButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-export default function AssessmentResultsScorecard({ assessmentData, totalMarks }) {
+export default function AssessmentResultsScorecard({
+  assessmentData,
+  totalMarks,
+}) {
   const [email, setEmail] = useState("");
   const [fullName, setFullName] = useState("");
 
@@ -168,30 +177,31 @@ export default function AssessmentResultsScorecard({ assessmentData, totalMarks 
           <Divider sx={{ mt: 2, mb: 3 }} />
         </Box>
         <Box>
-          {assessmentData?.questions
-            .map((item, index) => (
-              <QuestionItem key={index}>
-                <Box sx={{ display: "flex", alignItems: "flex-start", flex: 1 }}>
-                  <Typography
-                    sx={{
-                      fontSize: "14px",
-                      fontWeight: "bold",
-                      color: "#666",
-                      mr: 1,
-                      minWidth: "20px",
-                    }}
-                  >
-                    {index + 1}.
-                  </Typography>
-                  <QuestionText>
-                    <span style={{ fontSize: "16px", marginRight: "8px" }}>
-                      {item}
-                    </span>
-                  </QuestionText>
-                </Box>
-                <ScoreBox score={assessmentData.answers?.[index]}>{assessmentData.answers?.[index]}</ScoreBox>
-              </QuestionItem>
-            ))}
+          {assessmentData?.questions?.map((item, index) => (
+            <QuestionItem key={index}>
+              <Box sx={{ display: "flex", alignItems: "flex-start", flex: 1 }}>
+                <Typography
+                  sx={{
+                    fontSize: "14px",
+                    fontWeight: "bold",
+                    color: "#666",
+                    mr: 1,
+                    minWidth: "20px",
+                  }}
+                >
+                  {index + 1}.
+                </Typography>
+                <QuestionText>
+                  <span style={{ fontSize: "16px", marginRight: "8px" }}>
+                    {item}
+                  </span>
+                </QuestionText>
+              </Box>
+              <ScoreBox score={assessmentData.answers?.[index]}>
+                {assessmentData.answers?.[index]}
+              </ScoreBox>
+            </QuestionItem>
+          ))}
         </Box>
 
         <Box sx={{ textAlign: "center", mb: 4, mt: 4 }}>
@@ -221,7 +231,10 @@ export default function AssessmentResultsScorecard({ assessmentData, totalMarks 
                 color: "#000",
               }}
             >
-              {Object.values(assessmentData?.answers || {}).reduce((sum, score) => sum + (score || 0), 0)}
+              {Object.values(assessmentData?.answers || {}).reduce(
+                (sum, score) => sum + (score || 0),
+                0
+              )}
             </Typography>
           </Box>
 
@@ -253,7 +266,14 @@ export default function AssessmentResultsScorecard({ assessmentData, totalMarks 
             mb: 4,
           }}
         >
-          <Box sx={{ display: "flex", alignItems: "center", mb: 2, justifyContent: "center" }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              mb: 2,
+              justifyContent: "center",
+            }}
+          >
             <Box
               sx={{
                 width: "40px",
@@ -266,7 +286,9 @@ export default function AssessmentResultsScorecard({ assessmentData, totalMarks 
                 mr: 2,
               }}
             >
-              <Typography sx={{ color: "white", fontWeight: "bold" }}>!</Typography>
+              <Typography sx={{ color: "white", fontWeight: "bold" }}>
+                !
+              </Typography>
             </Box>
             <Typography
               variant="h5"
@@ -291,28 +313,46 @@ export default function AssessmentResultsScorecard({ assessmentData, totalMarks 
           </Typography>
 
           <Box component="ul" sx={{ pl: 2, m: 0 }}>
-            <Box component="li" sx={{ mb: 1, display: "flex", alignItems: "flex-start" }}>
+            <Box
+              component="li"
+              sx={{ mb: 1, display: "flex", alignItems: "flex-start" }}
+            >
               <Typography sx={{ mr: 1, fontSize: "16px" }}>⏰</Typography>
               <Typography>
-                Losing <strong style={{ backgroundColor: "#ffff00" }}>4 to 5 hours DAILY</strong> of Peak Cognitive Performance 🚀
+                Losing{" "}
+                <strong style={{ backgroundColor: "#ffff00" }}>
+                  4 to 5 hours DAILY
+                </strong>{" "}
+                of Peak Cognitive Performance 🚀
               </Typography>
             </Box>
-            <Box component="li" sx={{ mb: 1, display: "flex", alignItems: "flex-start" }}>
+            <Box
+              component="li"
+              sx={{ mb: 1, display: "flex", alignItems: "flex-start" }}
+            >
               <Typography sx={{ mr: 1, fontSize: "16px" }}>🧠</Typography>
               <Typography>
-                Brain fog, self-doubt and procrastination significantly impact performance
+                Brain fog, self-doubt and procrastination significantly impact
+                performance
               </Typography>
             </Box>
-            <Box component="li" sx={{ mb: 1, display: "flex", alignItems: "flex-start" }}>
+            <Box
+              component="li"
+              sx={{ mb: 1, display: "flex", alignItems: "flex-start" }}
+            >
               <Typography sx={{ mr: 1, fontSize: "16px" }}>⛔</Typography>
               <Typography>
                 Currently have 3-4 Destructive Habit Routines to reprogram
               </Typography>
             </Box>
-            <Box component="li" sx={{ mb: 1, display: "flex", alignItems: "flex-start" }}>
+            <Box
+              component="li"
+              sx={{ mb: 1, display: "flex", alignItems: "flex-start" }}
+            >
               <Typography sx={{ mr: 1, fontSize: "16px" }}>🎯</Typography>
               <Typography>
-                NEXT STEP: Go back to the main training to learn more about your Brain State score
+                NEXT STEP: Go back to the main training to learn more about your
+                Brain State score
               </Typography>
             </Box>
           </Box>
@@ -326,7 +366,14 @@ export default function AssessmentResultsScorecard({ assessmentData, totalMarks 
             mb: 4,
           }}
         >
-          <Box sx={{ display: "flex", alignItems: "center", mb: 2, justifyContent: "center" }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              mb: 2,
+              justifyContent: "center",
+            }}
+          >
             <Box
               sx={{
                 width: "40px",
@@ -339,7 +386,9 @@ export default function AssessmentResultsScorecard({ assessmentData, totalMarks 
                 mr: 2,
               }}
             >
-              <Typography sx={{ color: "white", fontWeight: "bold" }}>!</Typography>
+              <Typography sx={{ color: "white", fontWeight: "bold" }}>
+                !
+              </Typography>
             </Box>
             <Typography
               variant="h5"
@@ -364,28 +413,47 @@ export default function AssessmentResultsScorecard({ assessmentData, totalMarks 
           </Typography>
 
           <Box component="ul" sx={{ pl: 2, m: 0 }}>
-            <Box component="li" sx={{ mb: 1, display: "flex", alignItems: "flex-start" }}>
+            <Box
+              component="li"
+              sx={{ mb: 1, display: "flex", alignItems: "flex-start" }}
+            >
               <Typography sx={{ mr: 1, fontSize: "16px" }}>😈</Typography>
               <Typography>
-                Losing <strong style={{ backgroundColor: "#ffff00" }}>2 to 4 hours DAILY</strong> of Peak Cognitive Performance 🚀 to destructive 🧠 subconscious habits.
+                Losing{" "}
+                <strong style={{ backgroundColor: "#ffff00" }}>
+                  2 to 4 hours DAILY
+                </strong>{" "}
+                of Peak Cognitive Performance 🚀 to destructive 🧠 subconscious
+                habits.
               </Typography>
             </Box>
-            <Box component="li" sx={{ mb: 1, display: "flex", alignItems: "flex-start" }}>
+            <Box
+              component="li"
+              sx={{ mb: 1, display: "flex", alignItems: "flex-start" }}
+            >
               <Typography sx={{ mr: 1, fontSize: "16px" }}>⚡</Typography>
               <Typography>
-                Some good habit programming but significant room for optimization.
+                Some good habit programming but significant room for
+                optimization.
               </Typography>
             </Box>
-            <Box component="li" sx={{ mb: 1, display: "flex", alignItems: "flex-start" }}>
+            <Box
+              component="li"
+              sx={{ mb: 1, display: "flex", alignItems: "flex-start" }}
+            >
               <Typography sx={{ mr: 1, fontSize: "16px" }}>❗</Typography>
               <Typography>
                 Currently have 2-3 Destructive Habit Routines to reprogram.
               </Typography>
             </Box>
-            <Box component="li" sx={{ mb: 1, display: "flex", alignItems: "flex-start" }}>
+            <Box
+              component="li"
+              sx={{ mb: 1, display: "flex", alignItems: "flex-start" }}
+            >
               <Typography sx={{ mr: 1, fontSize: "16px" }}>✨</Typography>
               <Typography>
-                NEXT STEP: Go back to the main training to learn more about your Brain State score.
+                NEXT STEP: Go back to the main training to learn more about your
+                Brain State score.
               </Typography>
             </Box>
           </Box>
@@ -399,7 +467,14 @@ export default function AssessmentResultsScorecard({ assessmentData, totalMarks 
             mb: 4,
           }}
         >
-          <Box sx={{ display: "flex", alignItems: "center", mb: 2, justifyContent: "center" }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              mb: 2,
+              justifyContent: "center",
+            }}
+          >
             <Box
               sx={{
                 width: "40px",
@@ -412,7 +487,9 @@ export default function AssessmentResultsScorecard({ assessmentData, totalMarks 
                 mr: 2,
               }}
             >
-              <Typography sx={{ color: "white", fontWeight: "bold" }}>✓</Typography>
+              <Typography sx={{ color: "white", fontWeight: "bold" }}>
+                ✓
+              </Typography>
             </Box>
             <Typography
               variant="h5"
@@ -436,28 +513,45 @@ export default function AssessmentResultsScorecard({ assessmentData, totalMarks 
           </Typography>
 
           <Box component="ul" sx={{ pl: 2, m: 0 }}>
-            <Box component="li" sx={{ mb: 1, display: "flex", alignItems: "flex-start" }}>
+            <Box
+              component="li"
+              sx={{ mb: 1, display: "flex", alignItems: "flex-start" }}
+            >
               <Typography sx={{ mr: 1, fontSize: "16px" }}>😈</Typography>
               <Typography>
-                Losing <strong style={{ backgroundColor: "#ffff00" }}>1 to 3 hours DAILY</strong> of Peak Cognitive Performance 🚀 to subconscious habits 🧠.
+                Losing{" "}
+                <strong style={{ backgroundColor: "#ffff00" }}>
+                  1 to 3 hours DAILY
+                </strong>{" "}
+                of Peak Cognitive Performance 🚀 to subconscious habits 🧠.
               </Typography>
             </Box>
-            <Box component="li" sx={{ mb: 1, display: "flex", alignItems: "flex-start" }}>
+            <Box
+              component="li"
+              sx={{ mb: 1, display: "flex", alignItems: "flex-start" }}
+            >
               <Typography sx={{ mr: 1, fontSize: "16px" }}>✅</Typography>
               <Typography>
                 Generally good programming with opportunity to optimize.
               </Typography>
             </Box>
-            <Box component="li" sx={{ mb: 1, display: "flex", alignItems: "flex-start" }}>
+            <Box
+              component="li"
+              sx={{ mb: 1, display: "flex", alignItems: "flex-start" }}
+            >
               <Typography sx={{ mr: 1, fontSize: "16px" }}>✅</Typography>
               <Typography>
                 Might have 1-2 Destructive Habit Routines to reprogram.
               </Typography>
             </Box>
-            <Box component="li" sx={{ mb: 1, display: "flex", alignItems: "flex-start" }}>
+            <Box
+              component="li"
+              sx={{ mb: 1, display: "flex", alignItems: "flex-start" }}
+            >
               <Typography sx={{ mr: 1, fontSize: "16px" }}>✨</Typography>
               <Typography>
-                NEXT STEP: Go back to the main training to learn more about your Brain State score.
+                NEXT STEP: Go back to the main training to learn more about your
+                Brain State score.
               </Typography>
             </Box>
           </Box>
