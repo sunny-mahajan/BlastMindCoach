@@ -28,24 +28,47 @@ const SCREENS = {
   2: AssessmentResultsScorecard,
 };
 
-const renderScreen = (screen, setScreen, assessmentData, setAssessmentData, currentQuestion, setCurrentQuestion) => {
+const renderScreen = (
+  screen,
+  setScreen,
+  assessmentData,
+  setAssessmentData,
+  currentQuestion,
+  setCurrentQuestion,
+  questions
+) => {
   const ScreenComponent = SCREENS[screen] || WelComeScreen;
 
+  const totalmarks = questions?.reduce(
+    (sum, i) =>
+      sum +
+      (typeof i?.typeData?.rateLength === "number" ? i.typeData.rateLength : 0),
+    0
+  );
+
   if (screen === 1) {
-    return <ScreenComponent
-      setScreen={setScreen}
-      setAssessmentData={setAssessmentData}
-      currentQuestion={currentQuestion}
-      onQuestionChange={setCurrentQuestion}
-    />;
+    return (
+      <ScreenComponent
+        setScreen={setScreen}
+        setAssessmentData={setAssessmentData}
+        currentQuestion={currentQuestion}
+        onQuestionChange={setCurrentQuestion}
+        questions={questions}
+      />
+    );
   } else if (screen === 2) {
-    return <ScreenComponent assessmentData={assessmentData} />;
+    return (
+      <ScreenComponent
+        assessmentData={assessmentData}
+        totalMarks={totalmarks}
+      />
+    );
   }
 
   return <ScreenComponent setScreen={setScreen} />;
 };
 
-export default function AssessmentModal({ open, setOpen }) {
+export default function AssessmentModal({ open, setOpen, questions }) {
   const [screen, setScreen] = useState(0);
   const [assessmentData, setAssessmentData] = useState(null);
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -76,14 +99,17 @@ export default function AssessmentModal({ open, setOpen }) {
   ];
 
   const getBackgroundColor = (questionNumber) => {
-    if (screen === 1 && questionNumber >= 0 && questionNumber < questionColors.length) {
+    if (
+      screen === 1 &&
+      questionNumber >= 0 &&
+      questionNumber < questionColors.length
+    ) {
       return questionColors[questionNumber];
     } else if (screen === 2) {
       return "#0d3557";
     }
     return "#4CAF50";
   };
-
 
   const dynamicModalStyle = {
     ...modalStyle,
@@ -112,7 +138,15 @@ export default function AssessmentModal({ open, setOpen }) {
         >
           <CloseIcon />
         </IconButton>
-        {renderScreen(screen, setScreen, assessmentData, setAssessmentData, currentQuestion, setCurrentQuestion)}
+        {renderScreen(
+          screen,
+          setScreen,
+          assessmentData,
+          setAssessmentData,
+          currentQuestion,
+          setCurrentQuestion,
+          questions
+        )}
       </Box>
     </Modal>
   );

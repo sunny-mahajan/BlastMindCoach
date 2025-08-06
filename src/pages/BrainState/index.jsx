@@ -1,9 +1,35 @@
-import React, { useState } from "react";
-import { Box, Typography, Button, Container } from "@mui/material";
+import React, { useState, useEffect } from "react";
+import {
+  Box,
+  Typography,
+  Button,
+  Container,
+  CircularProgress,
+} from "@mui/material";
 import AssessmentModal from "../../components/BrainState";
+import ToolServices from "../../services/questionsService";
 
 const BrainState = () => {
   const [open, setOpen] = useState(false);
+  const [questions, setQuestions] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const getQuestions = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const data = await ToolServices?.fetchAssessmentQuestion();
+        setQuestions(data);
+      } catch {
+        setError("Failed to load questions");
+      } finally {
+        setLoading(false);
+      }
+    };
+    getQuestions();
+  }, []);
 
   return (
     <Container
@@ -69,7 +95,7 @@ const BrainState = () => {
             YOUR GOAL: Get your Brain State score...
           </Typography>
         </Box>
-
+        {error && <Typography color="error">{error}</Typography>}
         <Button
           variant="contained"
           fullWidth
@@ -89,11 +115,12 @@ const BrainState = () => {
             },
           }}
           onClick={() => setOpen(true)}
+          disabled={loading || !!error || questions.length === 0}
         >
-          👉 Take the assessment
+          {loading ? <CircularProgress size={20} /> : "👉 Take the assessment"}
         </Button>
       </Box>
-      <AssessmentModal open={open} setOpen={setOpen} />
+      <AssessmentModal open={open} setOpen={setOpen} questions={questions} />
     </Container>
   );
 };

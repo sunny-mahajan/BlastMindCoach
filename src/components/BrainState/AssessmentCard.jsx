@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Box, Typography, Button, Paper } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { questions } from "../../constants/brainStateQuestions";
 
 const GradientContainer = styled(Box)(() => ({
   width: "100%",
@@ -24,8 +23,8 @@ const ProgressDot = styled(Box)(({ active, completed }) => ({
   backgroundColor: completed
     ? "#fff"
     : active
-      ? "#fff"
-      : "rgba(255,255,255,0.4)",
+    ? "#fff"
+    : "rgba(255,255,255,0.4)",
   transition: "all 0.3s ease",
 }));
 
@@ -84,7 +83,12 @@ const NavigationContainer = styled(Box)({
   marginTop: "20px",
 });
 
-function AssessmentCard({ setScreen, setAssessmentData, onQuestionChange }) {
+function AssessmentCard({
+  setScreen,
+  setAssessmentData,
+  onQuestionChange,
+  questions,
+}) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState({});
   const [selectedValue, setSelectedValue] = useState(null);
@@ -110,8 +114,10 @@ function AssessmentCard({ setScreen, setAssessmentData, onQuestionChange }) {
     setAnswers(updatedAnswers);
 
     if (currentQuestion === questions.length - 1) {
+      const onlyQuestions = questions?.map((i) => i.question);
+
       setAssessmentData({
-        questions,
+        questions: onlyQuestions,
         answers: updatedAnswers,
         currentQuestion,
       });
@@ -155,12 +161,14 @@ function AssessmentCard({ setScreen, setAssessmentData, onQuestionChange }) {
           lineHeight: 1.4,
         }}
       >
-        {currentQuestion + 1}.{questions[currentQuestion]}
+        {currentQuestion + 1}.{questions[currentQuestion]?.question}
       </Typography>
 
       <ScaleContainer elevation={3}>
         <Box sx={{ display: "flex", gap: 1, position: "relative" }}>
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((value) => (
+          {Array.from({
+            length: questions[currentQuestion]?.typeData?.rateLength || 0,
+          }).map((_, idx) => (
             <>
               {(selectedValue === 1 || selectedValue === 10) && (
                 <Typography
@@ -179,12 +187,12 @@ function AssessmentCard({ setScreen, setAssessmentData, onQuestionChange }) {
                 </Typography>
               )}
               <ScaleButton
-                key={value}
-                value={value}
-                selected={selectedValue === value}
-                onClick={() => handleScaleSelect(value)}
+                key={idx}
+                value={idx + 1}
+                selected={selectedValue === idx + 1}
+                onClick={() => handleScaleSelect(idx + 1)}
               >
-                {value}
+                {idx + 1}
               </ScaleButton>
             </>
           ))}

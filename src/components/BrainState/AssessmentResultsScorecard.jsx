@@ -94,7 +94,7 @@ const ActionButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-export default function AssessmentResultsScorecard({ assessmentData }) {
+export default function AssessmentResultsScorecard({ assessmentData, totalMarks }) {
   const [email, setEmail] = useState("");
   const [fullName, setFullName] = useState("");
 
