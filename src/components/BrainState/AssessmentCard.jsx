@@ -89,17 +89,37 @@ function AssessmentCard({
   onQuestionChange,
   questions,
 }) {
-  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState({});
   const [selectedValue, setSelectedValue] = useState(null);
 
+  const currentQuestion = questions?.[currentQuestionIndex];
+  const currentQuestionId = currentQuestion?._id;
+
   const handleNext = () => {
-    if (currentQuestion < questions?.length - 1) {
-      const nextQuestion = currentQuestion + 1;
-      setCurrentQuestion(nextQuestion);
-      setSelectedValue(answers[nextQuestion] || null);
+    if (currentQuestionIndex < questions?.length - 1) {
+      const nextIndex = currentQuestionIndex + 1;
+      setCurrentQuestionIndex(nextIndex);
+
+      const nextQuestionId = questions[nextIndex]?._id;
+      setSelectedValue(answers[nextQuestionId] || null);
+
       if (onQuestionChange) {
-        onQuestionChange(nextQuestion);
+        onQuestionChange(nextIndex);
+      }
+    }
+  };
+
+  const handlePrevious = () => {
+    if (currentQuestionIndex > 0) {
+      const prevIndex = currentQuestionIndex - 1;
+      setCurrentQuestionIndex(prevIndex);
+
+      const prevQuestionId = questions[prevIndex]?._id;
+      setSelectedValue(answers[prevQuestionId] || null);
+
+      if (onQuestionChange) {
+        onQuestionChange(prevIndex);
       }
     }
   };
@@ -107,49 +127,44 @@ function AssessmentCard({
   const handleScaleSelect = (value) => {
     const updatedAnswers = {
       ...answers,
-      [currentQuestion]: value,
+      [currentQuestionId]: value,
     };
 
     setSelectedValue(value);
     setAnswers(updatedAnswers);
 
-    if (currentQuestion === questions?.length - 1) {
-      const onlyQuestions = questions?.map((i) => i.question);
+    if (currentQuestionIndex === questions?.length - 1) {
+      const questionsWithIds = questions?.map((q) => ({
+        _id: q._id,
+        question: q.question,
+      }));
 
       setAssessmentData({
-        questions: onlyQuestions,
+        questions: questionsWithIds,
         answers: updatedAnswers,
-        currentQuestion,
+        currentQuestion: currentQuestionIndex,
       });
+
       setScreen(2);
     } else {
       handleNext();
     }
   };
 
-  const handlePrevious = () => {
-    if (currentQuestion > 0) {
-      const prevQuestion = currentQuestion - 1;
-      setCurrentQuestion(prevQuestion);
-      setSelectedValue(answers[prevQuestion] || null);
-      if (onQuestionChange) {
-        onQuestionChange(prevQuestion);
-      }
-    }
-  };
-
   return (
     <GradientContainer>
+      {/* Progress Dots */}
       <ProgressDots>
-        {questions?.map((_, index) => (
+        {questions?.map((q, index) => (
           <ProgressDot
-            key={index}
-            completed={index < currentQuestion}
-            active={index === currentQuestion}
+            key={q._id}
+            completed={index < currentQuestionIndex}
+            active={index === currentQuestionIndex}
           />
         ))}
       </ProgressDots>
 
+      {/* Question Display */}
       <Typography
         variant="h6"
         sx={{
@@ -161,13 +176,14 @@ function AssessmentCard({
           lineHeight: 1.4,
         }}
       >
-        {currentQuestion + 1}.{questions?.[currentQuestion]?.question}
+        {currentQuestionIndex + 1}. {currentQuestion?.question}
       </Typography>
 
+      {/* Scale Buttons */}
       <ScaleContainer elevation={3}>
         <Box sx={{ display: "flex", gap: 1, position: "relative" }}>
           {Array.from({
-            length: questions?.[currentQuestion]?.typeData?.rateLength || 0,
+            length: currentQuestion?.typeData?.rateLength || 0,
           }).map((_, idx) => (
             <React.Fragment key={idx}>
               {(selectedValue === 1 || selectedValue === 10) && (
@@ -183,7 +199,7 @@ function AssessmentCard({
                     zIndex: 5,
                   }}
                 >
-                  {selectedValue === 1 ? "Never" : " Always"}
+                  {selectedValue === 1 ? "Never" : "Always"}
                 </Typography>
               )}
               <ScaleButton
@@ -199,11 +215,12 @@ function AssessmentCard({
         </Box>
       </ScaleContainer>
 
+      {/* Navigation Buttons */}
       <NavigationContainer>
         <Button
           variant="contained"
           onClick={handlePrevious}
-          disabled={currentQuestion === 0}
+          disabled={currentQuestionIndex === 0}
           sx={{
             backgroundColor: "#fff",
             color: "#000",

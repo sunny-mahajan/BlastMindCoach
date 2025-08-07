@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 
@@ -12,7 +13,7 @@ const api = axios.create({
 
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("authToken");
+    const token = Cookies.get("token");
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -29,8 +30,8 @@ api.interceptors.response.use(
 
       switch (status) {
         case 401:
-          localStorage.removeItem("authToken");
-          window.location.href = "/login";
+          Cookies.remove("token");
+          window.location.href = "/";
           break;
         case 403:
           console.error("Access forbidden");

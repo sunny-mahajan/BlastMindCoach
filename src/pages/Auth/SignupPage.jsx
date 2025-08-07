@@ -1,93 +1,144 @@
-import React, { useState, useContext } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import HeaderWrapper from "../../components/Header/HeaderWrapper";
 import NavBar from "../../components/Header/NavBar";
-import Logo from "../../components/Header/Logo";
 import FooterCompound from "../../compounds/FooterCompound";
-import SignFormWrapper from "../../components/SignForm/SignFormWrapper";
-import SignFormBase from "../../components/SignForm/SignFormBase";
-import SignFormTitle from "../../components/SignForm/SignFormTitle";
-import SignFormInput from "../../components/SignForm/SignFormInput";
-import SignFormButton from "../../components/SignForm/SignFormButton";
-import SignFormText from "../../components/SignForm/SignFormText";
-import SignFormLink from "../../components/SignForm/SignFormLink";
-import SignFormCaptcha from "../../components/SignForm/SignFormCaptcha";
-import SignFormError from "../../components/SignForm/SignFormError";
-import Warning from "../../components/Header/Warning";
+import Cookies from "js-cookie";
+import AuthServices from "../../services/authService";
+import { useForm } from "react-hook-form";
+import "../../components/SignForm/SignFormStyles.scss";
 
 function SignupPage() {
   const navigate = useNavigate();
-  const { firebase } = useContext();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setError,
+    clearErrors,
+  } = useForm();
 
-  const [firstName, setFirstName] = useState("");
-  const [emailAddress, setEmailAddress] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-
-  const IsInvalid = password === "" || emailAddress === "" || firstName === "";
-
-  function handleSubmit(event) {
-    event.preventDefault();
-
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(emailAddress, password)
-      .then((result) =>
-        result.user
-          .updateProfile({
-            displayName: firstName,
-          })
-          .then(() => {
-            setFirstName("");
-            setEmailAddress("");
-            setPassword("");
-            navigate("/browse");
-          })
-      )
-      .catch((error) => setError(error.message));
+  async function onSubmit(data) {
+    clearErrors();
+    try {
+      const response = await AuthServices.signUp({
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        password: data.password,
+      });
+      if (response.success === true && response.data.token) {
+        Cookies.set("token", response.data.token, { expires: 7 });
+        navigate("/browse");
+      } else {
+        setError("api", { type: "manual", message: response.message || "Signup failed" });
+      }
+    } catch (err) {
+      setError("api", { type: "manual", message: err?.message || "Signup failed" });
+    }
   }
 
   return (
     <>
       <HeaderWrapper className="header-wrapper-home">
-        <NavBar className="navbar-signin">
-          <Logo />
-        </NavBar>
-        <SignFormWrapper>
-          <SignFormBase onSubmit={handleSubmit} method="POST">
-            <Warning>NOT official Netflix</Warning>
-            <SignFormTitle>Sign Up</SignFormTitle>
-            {error ? <SignFormError>{error}</SignFormError> : null}
-            <SignFormInput
+        <div className="navbar-wrapper">
+          <NavBar className="navbar-signin">
+            <p className="navbar-brand-text">Blast Mind Coach</p>
+          </NavBar>
+        </div>
+        <div className="sign-form-wrapper">
+          <form
+            className="sign-form-base"
+            onSubmit={handleSubmit(onSubmit)}
+            method="POST"
+          >
+            <h1 className="sign-form-title">Sign Up</h1>
+            {errors.api && (
+              <div className="sign-form-error">
+                <img src="/images/icons/close-slim.png" alt="Error" />
+                {errors.api.message}
+              </div>
+            )}
+            <input
               type="text"
+              className={`sign-form-input${errors.firstName ? " error" : ""}`}
               placeholder="First Name"
-              value={firstName}
-              onChange={({ target }) => setFirstName(target.value)}
+              {...register("firstName", { required: "First name is required" })}
             />
-            <SignFormInput
+            {errors.firstName && (
+              <div className="sign-form-error">
+                <img src="/images/icons/close-slim.png" alt="Error" />
+                {errors.firstName.message}
+              </div>
+            )}
+            <input
               type="text"
-              placeholder="Email Address"
-              value={emailAddress}
-              onChange={({ target }) => setEmailAddress(target.value)}
+              className={`sign-form-input${errors.lastName ? " error" : ""}`}
+              placeholder="Last Name"
+              {...register("lastName", { required: "Last name is required" })}
             />
-            <SignFormInput
+            {errors.lastName && (
+              <div className="sign-form-error">
+                <img src="/images/icons/close-slim.png" alt="Error" />
+                {errors.lastName.message}
+              </div>
+            )}
+            <input
+              type="text"
+              className={`sign-form-input${errors.email ? " error" : ""}`}
+              placeholder="Email Address"
+              {...register("email", {
+                required: "Email address is required",
+                pattern: {
+                  value:
+                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                  message: "Please enter a valid email address",
+                },
+              })}
+            />
+            {errors.email && (
+              <div className="sign-form-error">
+                <img src="/images/icons/close-slim.png" alt="Error" />
+                {errors.email.message}
+              </div>
+            )}
+            <input
               type="password"
+              className={`sign-form-input${errors.password ? " error" : ""}`}
               placeholder="Password"
               autoComplete="off"
-              value={password}
-              onChange={({ target }) => setPassword(target.value)}
+              {...register("password", {
+                required: "Password is required",
+                minLength: {
+                  value: 4,
+                  message: "Your password must contain between 4 and 60 characters.",
+                },
+                maxLength: {
+                  value: 60,
+                  message: "Your password must contain between 4 and 60 characters.",
+                },
+              })}
             />
-            <SignFormButton disabled={IsInvalid}>Sign Up</SignFormButton>
-            <SignFormText>
+            {errors.password && (
+              <div className="sign-form-error">
+                <img src="/images/icons/close-slim.png" alt="Error" />
+                {errors.password.message}
+              </div>
+            )}
+            <button type="submit" className="sign-form-Button">
+              Sign Up
+            </button>
+            <p className="sign-form-text">
               Already a user?
-              <SignFormLink href="/signin">Sign in now.</SignFormLink>
-            </SignFormText>
-            <SignFormCaptcha>
-              This page is protected by Google reCAPTCHA to ensure you are not a
-              bot.
-            </SignFormCaptcha>
-          </SignFormBase>
-        </SignFormWrapper>
+              <a className="sign-form-link" href="/signin">
+                Sign in now.
+              </a>
+            </p>
+            <p className="sign-form-captcha">
+              This page is protected by Google reCAPTCHA to ensure you are not a bot.
+            </p>
+          </form>
+        </div>
       </HeaderWrapper>
       <FooterCompound />
     </>

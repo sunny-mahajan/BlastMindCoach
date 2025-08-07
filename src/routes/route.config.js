@@ -14,6 +14,10 @@ export const authRouter = [
 export const userRouter = [
   {
     path: "/",
+    component: asyncComponent(() => import("../pages/Home")),
+  },
+  {
+    path: "/manage-profile",
     component: asyncComponent(() => import("../pages/ProfilesPage")),
   },
   {

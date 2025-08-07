@@ -8,15 +8,16 @@ import Warning from "../components/Header/Warning";
 function HeaderCompound({ children }) {
   return (
     <HeaderWrapper className="header-wrapper-home">
-      <NavBar className="navbar-home">
-        <Logo />
-        <SigninButton>Sign In</SigninButton>
-      </NavBar>
+      <div className="navbar-wrapper">
+        <NavBar className="navbar-home">
+          <p className="navbar-brand-text">Blast Mind Coach</p>
+          <SigninButton>Sign In</SigninButton>
+        </NavBar>
+      </div>
       <div className="feature-wrapper-home">
         <h1 className="feature-title-home">
-          Unlimited movies, TV shows and more.
+          Unlimited Learning, Mentorship, and Growth.
         </h1>
-        <Warning>This is NOT official Netflix</Warning>
       </div>
       {children}
     </HeaderWrapper>

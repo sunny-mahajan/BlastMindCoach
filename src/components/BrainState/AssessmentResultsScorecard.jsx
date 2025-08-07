@@ -6,9 +6,13 @@ import {
   Divider,
   Button,
   TextField,
+  Snackbar,
+  CircularProgress,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { CheckCircle, Email, ShowChart } from "@mui/icons-material";
+import ToolServices from "../../services/questionsService";
+import { useNavigate } from "react-router";
 
 const GradientBackground = styled(Box)({
   display: "flex",
@@ -100,24 +104,65 @@ const ActionButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-export default function AssessmentResultsScorecard({
-  assessmentData,
-  totalMarks,
-}) {
+export default function AssessmentResultsScorecard({ assessmentData }) {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [fullName, setFullName] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [snackbarOpen, setSnackbarOpen] = useState({
+    open: false,
+    message: "",
+  });
 
-  const handleEmailResults = () => {
-    console.log("Email results clicked");
+  const handleSubmitEmail = async () => {
+    try {
+      setLoading(true);
+      if (!email || !fullName) {
+        setSnackbarOpen({
+          open: true,
+          message: "Please enter both email and full name",
+        });
+        return;
+      }
+      const data = {
+        email: email,
+        fullname: fullName,
+        toolId: "64f98fdd2a1e4b26b4d7cabc",
+        records: assessmentData?.answers || {},
+      };
+
+      const response = await ToolServices.saveAssessmentAnswer(data);
+      if (response.success) {
+        setSnackbarOpen({
+          open: true,
+          message: "Assessment submitted successfully!",
+        });
+
+        setTimeout(() => {
+          navigate("/browse");
+        }, 2000);
+      }
+    } catch (error) {
+      console.log("Error submitting email:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleSubmitEmail = () => {
-    console.log("Submit email:", { email, fullName });
-    // Here you would typically send the email with the assessment results
+  const handleSnackClose = () => {
+    setSnackbarOpen({ open: false, message: "" });
   };
 
   return (
     <GradientBackground>
+      <Snackbar
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        open={snackbarOpen.open}
+        onClose={handleSnackClose}
+        message={snackbarOpen.message}
+        autoHideDuration={3000}
+        key={"top-right"}
+      />
       <HeaderSection>
         <Box
           sx={{
@@ -193,12 +238,12 @@ export default function AssessmentResultsScorecard({
                 </Typography>
                 <QuestionText>
                   <span style={{ fontSize: "16px", marginRight: "8px" }}>
-                    {item}
+                    {item?.question}
                   </span>
                 </QuestionText>
               </Box>
-              <ScoreBox score={assessmentData.answers?.[index]}>
-                {assessmentData.answers?.[index]}
+              <ScoreBox score={assessmentData.answers?.[item._id]}>
+                {assessmentData.answers?.[item._id]}
               </ScoreBox>
             </QuestionItem>
           ))}
@@ -669,8 +714,11 @@ export default function AssessmentResultsScorecard({
                   backgroundColor: "#fff0f0",
                 },
               }}
+              startIcon={
+                loading ? <CircularProgress size={24} color="inherit" /> : null
+              }
             >
-              Submit
+              {loading ? "Sending..." : "Submit"}
             </Button>
           </Box>
         </Box>

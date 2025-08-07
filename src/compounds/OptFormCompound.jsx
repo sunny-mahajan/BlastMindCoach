@@ -8,7 +8,8 @@ function OptFormCompound() {
   return (
     <>
       <OptFormText>
-        Ready to watch? Enter your email to create or restart your membership.
+        Ready to begin? Enter your email to join or continue your learning
+        journey.
       </OptFormText>
       <OptFormWrapper>
         <OptFormEmail placeholder="Email Address" />

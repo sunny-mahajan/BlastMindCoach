@@ -1,0 +1,236 @@
+/* ############### SignForm Section ############### */
+
+.sign-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 570px;
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 5px;
+    width: 100%;
+    margin: auto;
+    max-width: 360px;
+    /* Increased max-width for larger screens */
+    padding: 30px 55px 40px;
+    margin-bottom: 100px;
+
+    @media (max-width: 768px) {
+        max-width: 380px;
+        /* Adjust max-width for tablets */
+        padding: 40px 48px 30px;
+    }
+
+    @media (max-width: 550px) {
+        padding: 40px 20px 40px;
+        min-height: 500px;
+        max-width: 90%;
+        /* Use percentage for smaller screens */
+    }
+
+    @media (max-width: 400px) {
+        padding: 30px 15px 30px;
+    }
+}
+
+.sign-form-title {
+    color: #fff;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 28px;
+
+    @media (max-width: 550px) {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+}
+
+.sign-form-base {
+    display: flex;
+    flex-direction: column;
+    max-width: 450px;
+    width: 100%;
+}
+
+.sign-form-input {
+    background: #333;
+    border-radius: 4px;
+    border: 0;
+    color: #fff;
+    height: 50px;
+    line-height: 50px;
+    padding: 0px 20px;
+    margin-bottom: 20px;
+
+    @media (max-width: 550px) {
+        height: 45px;
+        line-height: 45px;
+        margin-bottom: 15px;
+    }
+}
+
+.sign-form-Button {
+    background: #e50914;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 0 12px;
+    padding: 14px;
+    border: 0;
+    color: white;
+    cursor: pointer;
+
+    &:disabled {
+        opacity: 0.3;
+    }
+
+    @media (max-width: 550px) {
+        font-size: 15px;
+        padding: 12px;
+    }
+}
+
+.sign-form-text {
+    color: #8c8c8c;
+    font-size: 16px;
+    font-weight: 500;
+
+    @media (max-width: 550px) {
+        font-size: 14px;
+    }
+}
+
+.sign-form-link {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 30px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-left: 5px;
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+    @media (max-width: 550px) {
+        font-size: 14px;
+    }
+}
+
+.sign-form-captcha {
+    margin-top: 10px;
+    font-size: 13px;
+    line-height: normal;
+    color: #8c8c8c;
+
+    @media (max-width: 550px) {
+        font-size: 12px;
+    }
+}
+
+.sign-form-error {
+    font-size: 14px;
+    margin: 0 0 10px;
+    color: #ea394c;
+    display: flex;
+    align-items: center;
+
+    img {
+        height: 16px;
+        width: 16px;
+        margin-right: 5px;
+    }
+
+    @media (max-width: 550px) {
+        font-size: 13px;
+    }
+}
+
+.sign-form-input.error {
+    border: 1px solid #ea394c;
+}
+
+.sign-form-OR {
+    color: #8c8c8c;
+    font-size: 16px;
+    text-align: center;
+    margin: 20px 0;
+
+    @media (max-width: 550px) {
+        font-size: 14px;
+    }
+}
+
+.sign-form-code-button {
+    background: #4a4a4a;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 0 12px;
+    padding: 16px;
+    border: 0;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+
+    @media (max-width: 550px) {
+        font-size: 15px;
+        padding: 14px;
+    }
+}
+
+.sign-form-forgot-password {
+    color: #8c8c8c;
+    font-size: 16px;
+    text-decoration: none;
+    margin-top: 10px;
+    text-align: right;
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+    @media (max-width: 550px) {
+        font-size: 14px;
+    }
+}
+
+.sign-form-remember-me {
+    color: #b3b3b3;
+    font-size: 13px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+
+    input[type="checkbox"] {
+        margin-right: 5px;
+        width: 16px;
+        height: 16px;
+        background-color: #737373;
+        border: none;
+        border-radius: 2px;
+        appearance: none;
+        -webkit-appearance: none;
+        cursor: pointer;
+        position: relative;
+
+        &:checked {
+            background-color: #737373;
+        }
+
+        &:checked::before {
+            content: '\2713';
+            /* Checkmark character */
+            color: white;
+            font-size: 12px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    @media (max-width: 550px) {
+        font-size: 12px;
+    }
+}

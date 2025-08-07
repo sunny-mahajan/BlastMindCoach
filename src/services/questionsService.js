@@ -10,8 +10,19 @@ const fetchAssessmentQuestion = async () => {
   }
 };
 
-const ToolServices = {
-  fetchAssessmentQuestion,
+const saveAssessmentAnswer = async (data) => {
+  try {
+    const response = await api.post("/api/mindcoach/tool/record", data);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
 };
 
-export default ToolServices
+const ToolServices = {
+  fetchAssessmentQuestion,
+  saveAssessmentAnswer,
+};
+
+export default ToolServices;

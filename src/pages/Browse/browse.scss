@@ -98,7 +98,7 @@
 }
 
 .header-wrapper-home {
-  background: url("/images/misc/home-bg.jpg");
+  background: url("../../../public/images/misc/banner.png") no-repeat center center;
   background-position: top left;
   background-size: cover;
   background-repeat: no-repeat;
@@ -133,9 +133,13 @@
   padding: 0 50px;
 }
 
+.navbar-wrapper {
+ width: 65%;
+  margin: auto;
+}
+
 .navbar-home,
 .navbar-signin {
-  max-width: 1850px;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -256,7 +260,6 @@
 .signin-button {
   display: block;
   background-color: #e50914;
-  width: 84px;
   height: fit-content;
   color: #fff;
   border: 0;
@@ -264,6 +267,7 @@
   border-radius: 3px;
   padding: 8px 17px;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .header-link,

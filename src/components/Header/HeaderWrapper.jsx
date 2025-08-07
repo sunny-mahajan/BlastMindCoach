@@ -1,6 +1,5 @@
 import React from "react";
-import "./HeaderStyles.css";
-
+import "../../pages/Browse/browse.scss";
 function HeaderWrapper({ children, ...restProps }) {
   return <header {...restProps}>{children}</header>;
 }

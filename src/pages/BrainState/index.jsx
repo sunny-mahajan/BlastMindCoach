@@ -9,18 +9,26 @@ import {
 import AssessmentModal from "../../components/BrainState";
 import ToolServices from "../../services/questionsService";
 import { SampleQuestions } from "../../constants/brainStateQuestions";
-
+import { useSearchParams } from "react-router-dom";
+import Cookies from "js-cookie";
 const BrainState = () => {
   const [open, setOpen] = useState(false);
   const [questions, setQuestions] = useState(SampleQuestions);
   const [loading, setLoading] = useState(true);
+  const [searchParams] = useSearchParams();
+  const token = searchParams.get("tkn");
+
+  useEffect(() => {
+    if (token) {
+      Cookies.set("token", token, { expires: 7 });
+    }
+  }, [token]);
 
   useEffect(() => {
     const getQuestions = async () => {
       setLoading(true);
       try {
         const data = await ToolServices.fetchAssessmentQuestion();
-        console.log("data: ", data);
         setQuestions(data || SampleQuestions);
       } catch (err) {
         console.error("Fetch failed:", err);
