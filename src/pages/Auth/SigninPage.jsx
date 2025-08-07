@@ -98,10 +98,10 @@ function SigninPage() {
               Sign In
             </button>
             <p className="sign-form-OR">OR</p>
-            <button className="sign-form-code-button">
+            <button className="sign-form-code-button" type="button">
               Use a sign-in code
             </button>
-            <a className="sign-form-forgot-password" href="#">
+            <a className="sign-form-forgot-password" href="/">
               Forgot password?
             </a>
             <div className="sign-form-remember-me">
