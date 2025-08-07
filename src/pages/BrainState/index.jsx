@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import AssessmentModal from "../../components/BrainState";
 import ToolServices from "../../services/questionsService";
+import { SampleQuestions } from "../../constants/brainStateQuestions";
 
 const BrainState = () => {
   const [open, setOpen] = useState(false);
@@ -21,7 +22,7 @@ const BrainState = () => {
       setError(null);
       try {
         const data = await ToolServices?.fetchAssessmentQuestion();
-        setQuestions(data);
+        setQuestions(SampleQuestions || data);
       } catch {
         setError("Failed to load questions");
       } finally {
@@ -39,6 +40,7 @@ const BrainState = () => {
         bgcolor: "#fff",
         py: 4,
         display: "flex",
+        alignItems: "center",
         justifyContent: "center",
       }}
     >
