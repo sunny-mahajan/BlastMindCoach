@@ -1,0 +1,610 @@
+/* ############### Feature Section ############### */
+
+.feature-wrapper-home {
+  text-align: center;
+}
+
+.feature-title-home,
+.feature-title-browse {
+  color: white;
+  max-width: 640px;
+  font-size: 2em;
+  font-weight: 700;
+  margin: auto;
+}
+
+.feature-title-browse {
+  margin: initial;
+  line-height: normal;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.45);
+  margin-bottom: 20px;
+
+  @media (max-width: 550px) {
+    font-size: 30px;
+    margin-bottom: 15px;
+  }
+}
+
+.feature-subtitle-home,
+.feature-subtitle-browse {
+  color: white;
+  font-size: 1em;
+  font-weight: normal;
+  margin: 16px auto;
+}
+
+.warning {
+  color: white;
+  font-size: 1em;
+  font-weight: normal;
+  margin: 16px auto;
+  border: solid red;
+  width: fit-content;
+  padding: 10px;
+}
+
+.feature-subtitle-browse {
+  max-width: 640px;
+  margin: initial;
+  font-size: 22px;
+  line-height: normal;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.45);
+
+  @media (max-width: 550px) {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 550px) {
+  .feature-subtitle-home,
+  .feature-subtitle-browse {
+    font-size: 18px;
+  }
+}
+
+.play-button {
+  box-shadow: 0 0.6vw 1vw -0.4vw rgba(0, 0, 0, 0.35);
+  background-color: #e6e6e6;
+  border-width: 0;
+  padding: 10px 35px;
+  border-radius: 5px;
+  max-width: 130px;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+  color: #000;
+  transition: 0.4s ease;
+  outline: 0;
+  margin-top: 25px;
+
+  @media (max-width: 550px) {
+    padding: 8px 25px;
+    font-size: 16px;
+    margin-top: 15px;
+  }
+}
+
+.play-button:hover {
+  background: #ff1e1e;
+  color: white;
+}
+
+/* ############### Header Section ############### */
+.poster-area {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.header-wrapper-home {
+  background: url("/images/misc/home-bg.jpg");
+  background-position: top left;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 30px 50px;
+}
+
+.header-wrapper-browse {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  transition: background 0.2s;
+}
+
+.header-wrapper-browse.solid {
+  background: rgb(0, 0, 0);
+}
+
+@media (max-width: 550px) {
+  .header-wrapper-home,
+  .header-wrapper-browse {
+    padding: 15px 20px;
+  }
+}
+
+.feature-wrapper-browse {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 90vh;
+  padding: 0 50px;
+}
+
+.navbar-home,
+.navbar-signin {
+  max-width: 1850px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 175px;
+}
+
+.navbar-signin {
+  margin-bottom: 75px;
+}
+
+@media (max-width: 550px) {
+  .navbar-home,
+  .navbar-signin {
+    margin-bottom: 100px;
+  }
+}
+
+.navbar-browse {
+  padding: 8px 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar-links-wrapper {
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 550px) {
+    display: none;
+    /* Hide on small screens */
+  }
+}
+
+.burger-icon {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+
+  @media (max-width: 550px) {
+    display: flex;
+  }
+}
+
+.burger-icon .bar {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 4px 0;
+  transition: 0.4s;
+}
+
+.burger-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-start;
+  /* Align content to the left for sidebar */
+  align-items: flex-start;
+  /* Align content to the top for sidebar */
+  transition: all 0.3s ease-in-out;
+  /* Add transition for smooth slide-in */
+  transform: translateX(-100%);
+  /* Start off-screen */
+}
+
+.burger-menu-overlay.open {
+  transform: translateX(0);
+  /* Slide in */
+}
+
+.burger-menu-content {
+  background: black;
+  padding: 40px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* Align items to the start for sidebar */
+  position: relative;
+  width: 250px;
+  /* Set a width for the sidebar */
+  height: 100%;
+  /* Take full height */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+  /* Add shadow for depth */
+}
+
+.burger-menu-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  width: 24px;
+  filter: brightness(0) invert(1);
+}
+
+.navbar-brand-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: red;
+  margin: 0;
+
+  @media (max-width: 550px) {
+    font-size: 1.2rem;
+  }
+}
+
+.logo {
+  height: 32px;
+  width: 108px;
+}
+
+.signin-button {
+  display: block;
+  background-color: #e50914;
+  width: 84px;
+  height: fit-content;
+  color: #fff;
+  border: 0;
+  font-size: 15px;
+  border-radius: 3px;
+  padding: 8px 17px;
+  cursor: pointer;
+}
+
+.header-link,
+.header-link-bold {
+  padding: 5px;
+
+  @media (max-width: 550px) {
+    font-size: 0.9rem;
+  }
+}
+
+.header-link a {
+  color: #fff;
+  margin-left: 25px;
+  cursor: pointer;
+}
+
+.header-link-bold {
+  font-weight: bolder;
+}
+
+/* ############### Movies Section ############### */
+
+.slide-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 30px;
+  }
+
+  @media (max-width: 480px) {
+    margin-bottom: 20px;
+  }
+}
+
+.slide-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+}
+
+.title {
+  font-weight: bold;
+  padding: 5px 10px 5px 10px;
+  width: fit-content;
+  color: #fff;
+}
+
+@media (max-width: 650px) {
+  .slide-title {
+    text-align: center;
+  }
+}
+
+.all-cards-wrapper-scroll {
+  display: block;
+  /* Change from flex to block */
+  text-align: center;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  white-space: nowrap;
+  /* Keep all cards on one line */
+  padding-top: 30px; /* Add padding for scaled content */
+  padding-bottom: 30px; /* Add padding for scaled content */
+}
+
+.all-cards-wrapper-scroll::-webkit-scrollbar {
+  display: none;
+  /* Hide scrollbar for Chrome, Safari, Opera */
+}
+
+.all-cards-wrapper-scroll {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.card-wrapper {
+  position: relative;
+  display: inline-block;
+  /* Make cards inline-block for horizontal layout */
+  margin: 0 10px; /* Add some spacing between cards */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, z-index 0.3s ease;
+  width: 350px; /* Re-apply original image width */
+  height: 180px; /* Re-apply original image height */
+  border-radius: 20px; /* Keep border radius consistent */
+  overflow: hidden; /* Hide overflow from children if scaling occurs */
+
+  @media (max-width: 768px) {
+    width: 250px;
+    height: 140px;
+  }
+
+  @media (max-width: 480px) {
+    width: 180px;
+    height: 100px;
+  }
+}
+
+.card-wrapper:hover {
+  transform: scale(1.25);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Add shadow */
+  z-index: 10; /* Bring to front */
+
+  @media (max-width: 768px) {
+    transform: scale(1.1);
+  }
+
+  @media (max-width: 480px) {
+    transform: none;
+    /* Disable transform on hover for very small screens */
+  }
+}
+
+.card-details-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; /* Make it cover the entire card */
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.7
+  ); /* Make background slightly transparent */
+  padding: 15px; /* Increase padding for better spacing */
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-radius: 20px; /* Match card image border radius */
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+  overflow: hidden; /* Ensure content within stays */
+  background-image: none; /* Explicitly remove any background image */
+  z-index: 11; /* Ensure it's on top of the image */
+  transition: opacity 0.3s ease-in-out; /* Only transition opacity */
+}
+
+.card-wrapper:hover .card-details-hover {
+  opacity: 1; /* Fade in */
+}
+
+.card-details-hover .card-title {
+  margin-bottom: 5px; /* Adjust margin for better spacing */
+  font-size: 14px; /* Even smaller font size */
+  font-weight: bold; /* Make title bold */
+  white-space: normal; /* Allow text wrapping */
+}
+
+.card-details-hover .card-description {
+  font-size: 10px; /* Even smaller font size for description */
+  margin-bottom: 10px; /* Space before play button */
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Maybe limit to 2 lines for better fit */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal; /* Allow text wrapping */
+}
+
+.card-details-hover .play-button {
+  align-self: flex-start; /* Align play button to the start */
+  padding: 8px 15px; /* Adjust padding */
+  font-size: 14px; /* Adjust font size */
+  margin-top: auto; /* Push button to the bottom if content is short */
+}
+
+.card-image {
+  border: 0;
+  width: 100%; /* Ensure image fills the wrapper */
+  height: 100%; /* Ensure image fills the wrapper */
+  object-fit: fill; /* Cover the area */
+  cursor: pointer;
+  border-radius: 20px;
+  position: absolute; /* Position the image absolutely within the wrapper */
+  top: 0;
+  left: 0;
+  padding: 0;
+}
+
+.card-feature-wrapper {
+  background-size: contain;
+  position: relative;
+  height: 360px;
+  background-position-x: right;
+  background-repeat: no-repeat;
+  background-color: black;
+  padding-top: 30px;
+
+  @media (max-width: 900px) {
+    height: auto;
+    background-size: cover;
+    background-position-x: center;
+    padding: 20px;
+  }
+
+  @media (max-width: 600px) {
+    padding: 15px;
+  }
+
+  @media (max-width: 400px) {
+    padding: 10px;
+  }
+}
+
+.card-title {
+  color: white;
+  max-width: 640px;
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 30px;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+}
+
+.card-description {
+  color: white;
+  max-width: 500px;
+  font-size: 18px;
+  font-weight: 500;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 14px;
+  }
+}
+
+.card-feature-close {
+  color: white;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  outline: none;
+}
+
+.card-feature-close img {
+  filter: brightness(0) invert(1);
+  width: 24px;
+
+  @media (max-width: 480px) {
+    width: 20px;
+  }
+}
+
+.arrow-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-size: 30px;
+  background-color: transparent;
+}
+
+.arrow-button.left {
+  left: 0;
+}
+
+.arrow-button.right {
+  right: 0;
+}
+
+.arrow-button:hover {
+  background-color: transparent;
+}
+
+.player-video {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+
+  @media (max-width: 768px) {
+    max-width: 600px;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 300px;
+  }
+}
+
+.player-overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.card-number {
+  position: absolute;
+  top: 45%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  font-size: 15rem;
+  color: white;
+  opacity: 0.8;
+  z-index: 2; /* Ensure it's above the image but below the hover details */
+  font-weight: 900;
+  -webkit-text-stroke: 1px black; /* Outline for better visibility */
+  text-stroke: 1px black;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.card-wrapper:hover .card-number {
+  opacity: 0;
+}

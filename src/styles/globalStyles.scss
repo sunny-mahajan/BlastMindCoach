@@ -1,0 +1,30 @@
+.slide-container {
+  padding: 0 4em;
+  width: "100%";
+
+  @media (max-width: 768px) {
+    padding: 0 2em;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 1em;
+  }
+}
+
+.all-slides-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 45px;
+}
+
+.all-cards-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.all-cards-container:hover .arrow-button {
+  opacity: 1;
+}
