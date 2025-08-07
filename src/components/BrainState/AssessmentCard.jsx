@@ -169,7 +169,7 @@ function AssessmentCard({
           {Array.from({
             length: questions?.[currentQuestion]?.typeData?.rateLength || 0,
           }).map((_, idx) => (
-            <>
+            <React.Fragment key={idx}>
               {(selectedValue === 1 || selectedValue === 10) && (
                 <Typography
                   variant="body2"
@@ -194,7 +194,7 @@ function AssessmentCard({
               >
                 {idx + 1}
               </ScaleButton>
-            </>
+            </React.Fragment>
           ))}
         </Box>
       </ScaleContainer>

@@ -1,50 +1,66 @@
-import axios from 'axios';
+import axios from "axios";
 
-// Set your API base URL here
-const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 
-// Create an Axios instance
 const api = axios.create({
   baseURL: BASE_URL,
-  timeout: 10000,
+  timeout: 30000,
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
 
-// Add a response interceptor for error handling
-api.interceptors.response.use(
-  response => response,
-  error => {
-    // You can customize error handling here
-    if (error.response) {
-      // Server responded with a status other than 2xx
-      console.error('API Error:', error.response.status, error.response.data);
-    } else if (error.request) {
-      // No response received
-      console.error('API No Response:', error.request);
-    } else {
-      // Something else happened
-      console.error('API Error:', error.message);
+api.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("authToken");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
     }
-    return Promise.reject(error);
-  }
+    return config;
+  },
+  (error) => Promise.reject(error)
 );
 
-// Helper to build endpoints
-export const endpoint = (path) => `${path}`;
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response) {
+      const { status, data } = error.response;
 
-// Utility to cancel all pending requests
-let cancelTokens = [];
+      switch (status) {
+        case 401:
+          localStorage.removeItem("authToken");
+          window.location.href = "/login";
+          break;
+        case 403:
+          console.error("Access forbidden");
+          break;
+        case 404:
+          console.error("Resource not found");
+          break;
+        case 422:
+          console.error("Validation error:", data.message);
+          break;
+        case 429:
+          console.error("Too many requests");
+          break;
+        case 500:
+          console.error("Server error");
+          break;
+        default:
+          console.error(`Server error ${status}:`, data.message);
+      }
 
-export const getCancelToken = () => {
-  const source = axios.CancelToken.source();
-  cancelTokens.push(source);
-  return source.token;
-};
+      throw {
+        status,
+        message: data?.message || `Server error ${status}`,
+        errors: data?.errors || null,
+        ...error.response,
+      };
+    }
 
-export const cancelAllRequests = (message = 'Operation canceled by the user.') => {
-  cancelTokens.forEach(source => {
-    if (source.cancel) source.cancel(message);
-  });
-  cancelTokens = [];
-};
+    throw error;
+  }
+);
 
 export default api;

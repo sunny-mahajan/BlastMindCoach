@@ -12,19 +12,18 @@ import { SampleQuestions } from "../../constants/brainStateQuestions";
 
 const BrainState = () => {
   const [open, setOpen] = useState(false);
-  const [questions, setQuestions] = useState([]);
+  const [questions, setQuestions] = useState(SampleQuestions);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     const getQuestions = async () => {
       setLoading(true);
-      setError(null);
       try {
-        const data = await ToolServices?.fetchAssessmentQuestion();
-        setQuestions(SampleQuestions || data);
-      } catch {
-        setError("Failed to load questions");
+        const data = await ToolServices.fetchAssessmentQuestion();
+        console.log("data: ", data);
+        setQuestions(data || SampleQuestions);
+      } catch (err) {
+        console.error("Fetch failed:", err);
       } finally {
         setLoading(false);
       }
@@ -97,7 +96,6 @@ const BrainState = () => {
             YOUR GOAL: Get your Brain State score...
           </Typography>
         </Box>
-        {error && <Typography color="error">{error}</Typography>}
         <Button
           variant="contained"
           fullWidth
@@ -117,7 +115,7 @@ const BrainState = () => {
             },
           }}
           onClick={() => setOpen(true)}
-          disabled={loading || !!error || questions.length === 0}
+          disabled={loading || questions.length === 0}
         >
           {loading ? <CircularProgress size={20} /> : "👉 Take the assessment"}
         </Button>
