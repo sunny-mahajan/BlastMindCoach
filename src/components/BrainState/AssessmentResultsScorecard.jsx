@@ -12,7 +12,6 @@ import {
 import { styled } from "@mui/material/styles";
 import { CheckCircle, Email, ShowChart } from "@mui/icons-material";
 import ToolServices from "../../services/questionsService";
-import { useNavigate } from "react-router";
 
 const GradientBackground = styled(Box)({
   display: "flex",
@@ -105,7 +104,6 @@ const ActionButton = styled(Button)(({ theme }) => ({
 }));
 
 export default function AssessmentResultsScorecard({ assessmentData }) {
-  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [fullName, setFullName] = useState("");
   const [loading, setLoading] = useState(false);
@@ -135,12 +133,8 @@ export default function AssessmentResultsScorecard({ assessmentData }) {
       if (response.success) {
         setSnackbarOpen({
           open: true,
-          message: "Assessment submitted successfully!",
+          message: "Email sent successfully!",
         });
-
-        setTimeout(() => {
-          navigate("/browse");
-        }, 2000);
       }
     } catch (error) {
       console.log("Error submitting email:", error);

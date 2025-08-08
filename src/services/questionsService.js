@@ -2,7 +2,9 @@ import api from "../utils/api";
 
 const fetchAssessmentQuestion = async () => {
   try {
-    const response = await api.get("/api/mindcoach/assessment/question");
+    const response = await api.get(
+      "/api/mcContentSettings/assessment/question"
+    );
     return response.data;
   } catch (error) {
     console.error(error);
